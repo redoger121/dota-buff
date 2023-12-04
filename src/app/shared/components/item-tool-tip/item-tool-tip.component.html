@@ -1,0 +1,42 @@
+<div>
+    <div class="item-header">
+        <img class="item-img" [src]="'https://cdn.cloudflare.steamstatic.com'+itemDesc.img" alt="item-img">
+        <div class="name-gold__wrapper">
+            <p class="item-name">{{itemDesc.dname}}</p>
+            <div class="gold__wrapper" *ngIf="itemDesc.cost && !itemDesc.tier">
+                <img class="gold-img" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/gold.png"
+                    alt="gold-icon">
+                <p *ngIf="itemDesc.cost>=0 && !itemDesc.tier">{{itemDesc.cost}}</p>
+            </div>
+            <div class="gold__wrapper" *ngIf="itemDesc.tier">
+                <p class="neutral-item">NEUTRAL ITEM TIER: </p>
+                <p> {{itemDesc.tier}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="itemDesc.hint" class="item-hint"> {{itemDesc.hint}}</div>
+    <div *ngIf="itemDesc.notes" class="item-hint">{{itemDesc.notes}}</div>
+    <div *ngIf="itemDesc.lore" class="item-lore">{{itemDesc.lore}}</div>
+
+    <div class="item-components" *ngIf="itemDesc.components">
+        <p class="components-header">Components:</p>
+        <div class="components__wrapper">
+
+            <div class="item-component" *ngFor="let component of itemDesc.components">
+                <img class="component-img" [src]="'https://cdn.cloudflare.steamstatic.com'+allItems[component].img" alt="component-img">
+                <p class="component-cost">{{allItems[component].cost}}</p>
+            </div>
+
+
+            <div class="item-component" *ngIf="isRecipe">
+                <img class="component-img" [src]="'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png?t=1593393829403'"
+                    alt="component-img">
+                <p class="component-cost">{{recipeCost}}</p>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

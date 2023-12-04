@@ -1,0 +1,100 @@
+.rank-wrapper{
+    position: relative;
+    display: flex;
+    width: fit-content;
+   
+}
+.rank{
+    position: absolute;
+    width: 124px;
+    height: 124px;
+}
+
+.star{
+    width: 124px;
+    height: 124px;  
+}
+
+.user-avatar{
+    border-radius: 50%;
+    max-width: 124px;
+    max-height: 124px;  
+}
+
+.win-lose__wrapper{
+    display: flex;
+
+}
+
+.win-text{
+    color: #66bb6a;
+    font-size: 24px;
+}
+
+
+
+.lose-text{
+    color: #ff4c4c;
+    font-size:24px
+}
+
+.main-text__14px{
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.win-lose+.win-lose{
+    margin-left: 40px;
+}
+
+.winrate-text{
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.username{
+    font-size: 28px;
+}
+
+.user-info__wrapper{
+    display: flex;
+}
+.main-info{
+margin-left: 40px;
+}
+.main-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.rank-numbers{
+    color: white;
+}
+
+.rank-numbers{
+    position: absolute;
+    align-self: center;
+    margin-top: 40px;
+    margin-left: 52px;
+    font-size: 22px;
+    color: rgb(236, 217, 200)!important;
+    text-shadow: black 0px 0px 10px;
+}
+.body{
+    background-color: rgba(14, 84, 113, 0.37);
+    background-image: linear-gradient(to right, rgb(26, 43, 62), rgb(20, 30, 48));
+}
+
+.bg-body-tertiary{
+    opacity: 0;
+    
+}
+.nav-link{
+    color: white!important;
+}
+
+
+.custom-container{
+    max-width: 1500px!important;
+}

@@ -1,0 +1,28 @@
+img{
+    max-width: 42px;
+    max-height: 42px;
+    display: block;
+}
+.user-wrapper{
+    display: flex;
+    justify-content: space-between;
+    min-width: 300px;
+    background-color: #2E3740;
+    
+   
+}
+.user{
+ 
+  display: flex;
+ 
+ 
+}
+.last-match{
+    font-style: 12px;
+    color: white;
+}
+
+.username{
+    font-size: 16px;
+    color: white;
+}

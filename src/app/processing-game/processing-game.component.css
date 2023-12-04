@@ -1,0 +1,93 @@
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+label {
+    color: grey
+}
+
+form {
+    width: fit-content;
+    margin: auto;
+}
+
+.match-input {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-bottom: 1px solid white;
+    font-size: 20px;
+
+}
+
+.match-input:focus {
+    outline: none;
+    transition: color .5s ease-in-out;
+}
+
+form:focus-within label {
+    color: lightblue;
+    transition: all .5s ease-in-out;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: relative;
+}
+
+.start-precessing {
+    background-color: gray;
+    color: white;
+    padding: 5px 5px;
+    border-radius: 4px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.form-group>span:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    border: 1px solid lightblue;
+    border-left: none;
+    border-bottom: none;
+    transition: width 0.5s ease-out, visibility 0.5s ease-out ;
+}
+
+form:focus-within .form-group>span:after {
+    width: 50%;
+    visibility: visible;
+    border-color: lightblue;
+    transition: width .5s ease-out;
+}
+
+form .form-group>span:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    width: 0;
+    height: 0;
+visibility: hidden;
+    border: 1px solid lightblue;
+    border-left: none;
+    border-bottom: none;
+
+    transition: width 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+form:focus-within .form-group>span:before {
+    width: 50%;
+visibility: visible;
+    border-color: lightblue;
+    transition: width .5s ease-out;
+}

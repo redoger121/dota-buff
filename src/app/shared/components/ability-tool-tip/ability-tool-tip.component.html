@@ -1,0 +1,140 @@
+<div class="ability-desc">
+
+    <div class="top-block">
+        <ng-template [ngIf]="abilityInfo.img">
+            <img class="ability-image" [src]="'https://cdn.cloudflare.steamstatic.com'+abilityInfo.img" alt="ability image">
+        </ng-template>
+        <ng-template [ngIf]="!abilityInfo.img">
+            <img class="ability-image" src="https://www.opendota.com/assets/images/dota2/talent_tree.svg" alt="ability image">
+        </ng-template>
+        <ng-template [ngIf]="abilityInfo.dname">
+            <p class="ability-name">{{abilityInfo.dname}}</p>
+        </ng-template>
+        <ng-template [ngIf]="!abilityInfo.dname">
+            <p class="ability-name">Bonuse Attribtues</p>
+        </ng-template>
+    </div>
+
+
+    <div class="ability-type-info" *ngIf="abilityInfo.behavior || abilityInfo.dmg_type || abilityInfo.bkbpierce ">
+
+
+        <ng-template [ngIf]="abilityInfo.behavior">
+
+            <p class="ability-parametr">TARGET:
+                <ng-template [ngIf]="abilityInfo.behavior.constructor.name==='Array'">
+                    <ng-template ngFor let-item [ngForOf]="abilityInfo.behavior" let-index="index">
+                        <ng-template [ngIf]="index<abilityInfo.behavior.length-1">
+                            {{item}}/
+                        </ng-template>
+                        <ng-template [ngIf]="index===abilityInfo.behavior.length-1">
+                            {{item}}
+                        </ng-template>
+                    </ng-template>
+
+                </ng-template>
+
+
+                <ng-template [ngIf]="abilityInfo.behavior.constructor.name==='String'">
+                    {{abilityInfo.behavior}}
+                </ng-template>
+            </p>
+
+        </ng-template>
+
+
+        <ng-template [ngIf]="abilityInfo.dmg_type">
+            <p class="ability-parametr">DAMAGE TYPE: {{abilityInfo.dmg_type}}</p>
+        </ng-template>
+        <ng-template [ngIf]="abilityInfo.bkbpierce">
+            <p class="ability-parametr">PIERCE SPELL IMMUNITY: {{abilityInfo.bkbpierce}}</p>
+        </ng-template>
+
+    </div>
+
+    <div class="ability-lore" *ngIf="abilityInfo.lore">
+        <ng-template [ngIf]="abilityInfo.lore">
+            <p class="lore-text">{{abilityInfo.lore}}</p>
+        </ng-template>
+
+    </div>
+
+
+    <div class="attribut-wrapper" *ngIf="abilityInfo.attrib ">
+        <div class="" *ngFor="let item of abilityInfo.attrib ">
+            <p>{{item.header}}
+                <ng-template [ngIf]="item.value.constructor.name === 'Array'">
+
+                    <ng-template ngFor let-value [ngForOf]="item.value" let-index="index">
+                        <ng-template [ngIf]="index<item.value.length-1">
+                            {{value}}/
+                        </ng-template>
+                        <ng-template [ngIf]="index===item.value.length-1">
+                            {{value}}
+                        </ng-template>
+
+
+
+                    </ng-template>
+                </ng-template>
+
+                <ng-template [ngIf]="item.value.constructor.name === 'String'">
+                    {{item.value}}
+                </ng-template>
+            </p>
+
+        </div>
+    </div>
+
+
+    <div class="mc-cd__wrapper">
+
+        <div class="mana-cost" *ngIf="abilityInfo.mc">
+
+            <img class="mc-cd-img" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/mana.png" alt="mana-img">
+            <p>
+                <ng-template [ngIf]="abilityInfo.mc.constructor.name==='Array'">
+                    <ng-template ngFor let-item [ngForOf]="abilityInfo.mc" let-index="index">
+                        <ng-template [ngIf]="index<abilityInfo.mc.length-1">
+                            {{item}}/
+                        </ng-template>
+                        <ng-template [ngIf]="index===abilityInfo.mc.length-1">
+                            {{item}}
+                        </ng-template>
+                    </ng-template>
+
+                </ng-template>
+
+                <ng-template [ngIf]="abilityInfo.mc.constructor.name==='String'">
+                    {{abilityInfo.cd}}
+                </ng-template>
+
+            </p>
+
+
+        </div>
+
+        <div class="col-down" *ngIf="abilityInfo.cd">
+            <img class="mc-cd-img" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/cooldown.png" alt="col-down img">
+            <p>
+                <ng-template [ngIf]="abilityInfo.cd.constructor.name==='Array'">
+                    <ng-template ngFor let-item [ngForOf]="abilityInfo.cd" let-index="index">
+                        <ng-template [ngIf]="index<abilityInfo.cd.length-1">
+                            {{item}}/
+                        </ng-template>
+                        <ng-template [ngIf]="index===abilityInfo.cd.length-1">
+                            {{item}}
+                        </ng-template>
+                    </ng-template>
+
+                </ng-template>
+
+                <ng-template [ngIf]="abilityInfo.cd.constructor.name==='String'">
+                    {{abilityInfo.cd}}
+                </ng-template>
+
+            </p>
+            <div>
+
+            </div>
+        </div>

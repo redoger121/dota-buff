@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8 align-items-center">
+            <h1>Обработать матч</h1>
+            <form (ngSubmit)="onSubmit()" #f="ngForm">
+                <div class="form-group">
+                    <label for="matchid">Номер матча</label>
+                    <span>
+                        <input type="text" id="matchid" class="match-input"   [ngModel]="matchId"  [readonly]="isReadOnly"  ngModel name="matchId" number required >
+                    </span>
+                    </div>
+                    <ng-template [ngIf]="!matchId">
+                        <button class="start-precessing" [disabled]="!f.valid" type="submit">Обработать</button>
+                    </ng-template>
+                    <ng-template [ngIf]="matchId">
+                        <app-loading-spiner></app-loading-spiner>
+                    </ng-template>
+            </form>
+        </div>
+    </div>
+</div>

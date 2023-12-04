@@ -1,0 +1,14 @@
+
+
+
+<div class="user-wrapper" >
+  <div class="user">
+    <img [src]="element.avatarfull" class="user-img" alt="...">
+    <div class="user-description">
+      <a class="username" (click)="goToUserDetailPage(element.account_id)">{{element.personaname}}</a>
+      <p class="last-match">Последний матч {{element.last_match_time| date:'short'}}</p>
+
+    </div>
+  </div>
+
+</div>

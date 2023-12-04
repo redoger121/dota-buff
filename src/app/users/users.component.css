@@ -1,0 +1,18 @@
+form{
+    display: flex;
+    justify-content: center;
+    
+}
+button{
+    max-height: 38px;
+    margin-left: 10px;
+   
+}
+
+input{
+    width: 400px;
+}
+
+.container{
+    margin-top: 20px;
+}

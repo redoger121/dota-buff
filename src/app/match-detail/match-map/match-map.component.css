@@ -1,0 +1,40 @@
+.map-wrapper {
+    width: 400px;
+    height: 400px;
+    max-width: 300px;
+    max-height: 300px;
+    position: relative;
+}
+
+picture {
+    position: relative;
+}
+
+.picture img {
+    height: 100%;
+    width: 100%;
+}
+
+.tower-wrapper {
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 2;
+}
+
+.tower {
+    width: 16px;
+}
+
+.throne {
+    width: 25px;
+}
+
+.barrack {
+    width: 12px;
+}
+
+
+

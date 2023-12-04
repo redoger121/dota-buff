@@ -1,0 +1,13 @@
+.fedXRh {
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    background-color: rgb(114, 114, 114);
+    align-self: flex-end;
+    bottom: -10px;
+    left: 0px;
+    pointer-events: auto !important;
+}
+.fedXRh > div {
+    height: 100%;
+}
