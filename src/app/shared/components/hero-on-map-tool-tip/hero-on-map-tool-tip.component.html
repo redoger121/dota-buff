@@ -1,0 +1,11 @@
+<ng-template [ngIf]="isRadiant">
+
+    <div class="radiant-hero">{{hero.localized_name}}</div>
+</ng-template>
+<ng-template [ngIf]="!isRadiant">
+
+    <div class="dire-hero">{{hero.localized_name}}</div>
+</ng-template>
+
+
+<div>{{heroLaneRole}}</div>

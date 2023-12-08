@@ -1,0 +1,68 @@
+.table {
+    --bs-table-bg: transparent;
+
+    padding: 0 !important;
+}
+
+.table-hover tbody tr:hover td {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-img {
+    width: 52px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+td {
+    text-align: center;
+}
+th:last-child{
+padding-right: 10px!important;
+}
+.table>:not(caption)>*>* {
+    padding: 0.5rem 5px;
+}
+
+table.table {
+    width: fit-content;
+    margin: auto;
+    border: 1px solid gray;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    display: block;
+    overflow: hidden;
+
+}
+
+thead {
+
+    background: linear-gradient(90deg, rgba(20, 255, 212, 0.09) 2%, rgba(46, 160, 214, 0.26) 27%, rgba(5, 181, 249, 0.04) 80%);
+
+}
+
+th {
+    text-align: center;
+}
+
+
+.items-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+
+}
+
+.main-items {
+    display: flex;
+    /* position: relative; */
+    width: 250px;
+}
+
+.main-item {
+    margin: 1px !important;
+    width: 39px;
+    height: 29px;
+}

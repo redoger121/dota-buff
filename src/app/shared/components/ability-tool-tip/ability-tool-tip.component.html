@@ -2,10 +2,12 @@
 
     <div class="top-block">
         <ng-template [ngIf]="abilityInfo.img">
-            <img class="ability-image" [src]="'https://cdn.cloudflare.steamstatic.com'+abilityInfo.img" alt="ability image">
+            <img class="ability-image" [src]="'https://cdn.cloudflare.steamstatic.com'+abilityInfo.img"
+                alt="ability image">
         </ng-template>
         <ng-template [ngIf]="!abilityInfo.img">
-            <img class="ability-image" src="https://www.opendota.com/assets/images/dota2/talent_tree.svg" alt="ability image">
+            <img class="ability-image" src="https://www.opendota.com/assets/images/dota2/talent_tree.svg"
+                alt="ability image">
         </ng-template>
         <ng-template [ngIf]="abilityInfo.dname">
             <p class="ability-name">{{abilityInfo.dname}}</p>
@@ -91,7 +93,8 @@
 
         <div class="mana-cost" *ngIf="abilityInfo.mc">
 
-            <img class="mc-cd-img" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/mana.png" alt="mana-img">
+            <img class="mc-cd-img" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/mana.png"
+                alt="mana-img">
             <p>
                 <ng-template [ngIf]="abilityInfo.mc.constructor.name==='Array'">
                     <ng-template ngFor let-item [ngForOf]="abilityInfo.mc" let-index="index">
@@ -106,7 +109,7 @@
                 </ng-template>
 
                 <ng-template [ngIf]="abilityInfo.mc.constructor.name==='String'">
-                    {{abilityInfo.cd}}
+                    {{abilityInfo.mc}}
                 </ng-template>
 
             </p>
@@ -115,7 +118,8 @@
         </div>
 
         <div class="col-down" *ngIf="abilityInfo.cd">
-            <img class="mc-cd-img" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/cooldown.png" alt="col-down img">
+            <img class="mc-cd-img" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/cooldown.png"
+                alt="col-down img">
             <p>
                 <ng-template [ngIf]="abilityInfo.cd.constructor.name==='Array'">
                     <ng-template ngFor let-item [ngForOf]="abilityInfo.cd" let-index="index">
@@ -138,3 +142,5 @@
 
             </div>
         </div>
+    </div>
+</div>

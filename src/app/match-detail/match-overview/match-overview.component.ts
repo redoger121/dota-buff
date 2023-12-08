@@ -25,7 +25,15 @@ export class MatchOverViewComponent implements OnInit {
   radiantWin!: boolean;
   abilityUpgardesArray: string[][] = [];
   version!: number | null;
+  playersPositon: { lane: number; laneRole: number; laneKills: number }[] = [];
+  radiantHardLaneCore: number = 0;
+  radiantEasyLaneCore: number = 0;
+  direHardLaneCore: number = 0;
+  direEasyLaneCore: number = 0;
+  radiantPosition: number[] = [];
   isPermanentBuffs = false;
+  radiantGoldAvg!: number[];
+  radiantExpAvg!: number[];
   constructor(
     private matchesDetailService: MatchesDetailService,
     private dataStorageService: DataStorageService
@@ -53,8 +61,46 @@ export class MatchOverViewComponent implements OnInit {
     this.matchesDetailService.matchInfo.subscribe((response) => {
       this.version = response.version;
       this.players = response.players;
-
+      console.log(this.players)
+      this.radiantGoldAvg = response.radiant_gold_adv;
+      this.radiantExpAvg = response.radiant_xp_adv;
       this.players.forEach((el) => {
+        if (
+          el.lane === 3 &&
+          el.lane_kills > this.radiantHardLaneCore &&
+          el.isRadiant
+        ) {
+          this.radiantHardLaneCore = el.lane_kills;
+        }
+        if (
+          el.lane === 1 &&
+          el.lane_kills > this.radiantEasyLaneCore &&
+          el.isRadiant
+        ) {
+          this.radiantEasyLaneCore = el.lane_kills;
+        }
+        if (
+          el.lane === 3 &&
+          el.lane_kills > this.direHardLaneCore &&
+          !el.isRadiant
+        ) {
+          this.direHardLaneCore = el.lane_kills;
+        }
+        if (
+          el.lane === 1 &&
+          el.lane_kills > this.direEasyLaneCore &&
+          !el.isRadiant
+        ) {
+          this.direEasyLaneCore = el.lane_kills;
+        }
+
+        if (el.lane && el.lane_role && el.lane_kills) {
+          this.playersPositon.push({
+            lane: el.lane,
+            laneRole: el.lane_role,
+            laneKills: el.lane_kills,
+          });
+        }
         if (el.permanent_buffs && el.permanent_buffs.length > 0) {
           this.isPermanentBuffs = true;
           el.permanent_buffs.forEach((buff) => {
@@ -71,6 +117,8 @@ export class MatchOverViewComponent implements OnInit {
           });
         }
       });
+
+      console.log(this.playersPositon);
 
       this.radiantWin = response.radiant_win;
       this.towerRadiantStatus = this.transformTowerDataToArray(

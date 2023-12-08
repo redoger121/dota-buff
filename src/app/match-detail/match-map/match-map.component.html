@@ -1,290 +1,354 @@
-<div class="map-wrapper">
-    <picture class="picture">
-        <source srcset="https://www.opendota.com/assets/images/dota2/map/detailed_733.webp"
-            type="image/webp">
-        <source srcset="https://www.opendota.com/assets/images/dota2/map/detailed_733.jpg"
-            type="image/jpeg">
-        <img src="https://www.opendota.com/assets/images/dota2/map/detailed_733.jpg"
-            alt="Dota 2 Map - 7.33">
-    </picture>
-    <div class="tower-wrapper"
-        *ngIf="towerRadiantStatus && barracksRadiantSratus && towerDireStatus && barracksDireSratus">
+<div class="main-wrapper">
 
-
-        <span data-tip="true" data-for="t4br"
-            style="top: 82%; left: 12%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img class="tower" appTowerColor [colorCode]="towerRadiantStatus[0]"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
-                style="height: 16px; ">
-
-        </span>
-
-
-        <span data-tip="true" data-for="t4tr"
-            style="top: 79%; left: 8%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img class="tower" appTowerColor [colorCode]="towerRadiantStatus[1]"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
-                style="height: 16px; ">
-
-        </span>
-        <span data-tip="true" data-for="t3br"
-            style="top: 83.5%; left: 23%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[2]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t2br"
-            style="top: 85%; left: 46%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[3]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t1br"
-            style="top: 82%; left: 75%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[4]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
-                style="height: 16px; filter: grayscale(100%) brightness(70%);">
-
-        </span>
-        <span data-tip="true" data-for="t3mr"
-            style="top: 71.5%; left: 18.5%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[5]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower_angle.png" alt=""
-                style="height: 16px; filter: grayscale(100%) brightness(70%);">
-
-        </span>
-        <span data-tip="true" data-for="t2mr"
-            style="top: 63%; left: 27.5%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[6]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower_angle.png" alt=""
-                style="height: 16px; filter: grayscale(100%) brightness(70%);">
-
-        </span>
-        <span data-tip="true" data-for="t1mr"
-            style="top: 54%; left: 38%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[7]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower_angle.png" alt=""
-                style="height: 16px; filter: grayscale(100%) brightness(70%);">
-
-        </span>
-        <span data-tip="true" data-for="t3tr"
-            style="top: 68%; left: 8%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[8]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t2tr"
-            style="top: 53%; left: 9%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[9]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t1tr"
-            style="top: 36%; left: 9.5%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[10]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
-                style="height: 16px; filter: grayscale(100%) brightness(70%);">
-
-        </span>
-        <span data-tip="true" data-for="brbr"
-            style="top: 80.5%; left: 20%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksRadiantSratus[0]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax.png" alt=""
-                style="height: 12px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="bmbr"
-            style="top: 84.5%; left: 20%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksRadiantSratus[1]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax.png" alt=""
-                style="height: 12px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="brmr"
-            style="top: 72%; left: 15%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksRadiantSratus[2]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax_angle.png" alt=""
-                style="height: 12px; filter: grayscale(100%) brightness(70%);">
-
-        </span>
-        <span data-tip="true" data-for="bmmr"
-            style="top: 74.5%; left: 18%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksRadiantSratus[3]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax_angle.png" alt=""
-                style="height: 12px; filter: grayscale(100%) brightness(70%);">
-
-        </span>
-        <span data-tip="true" data-for="brtr"
-            style="top: 70.5%; left: 6.5%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksRadiantSratus[4]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax.png" alt=""
-                style="height: 12px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="bmtr"
-            style="top: 70.5%; left: 10.5%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksRadiantSratus[5]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax.png" alt=""
-                style="height: 12px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t4bd"
-            style="top: 16%; left: 84%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[0]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t4td"
-            style="top: 13%; left: 81%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[1]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t3bd"
-            style="top: 28%; left: 85.5%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[2]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t2bd"
-            style="top: 45%; left: 85%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[3]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t1bd"
-            style="top: 60%; left: 84%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[4]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t3md"
-            style="top: 24%; left: 73%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[5]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower_angle.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t2md"
-            style="top: 33%; left: 64%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[6]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower_angle.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t1md"
-            style="top: 43.5%; left: 51%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[7]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower_angle.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t3td"
-            style="top: 12.5%; left: 70%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[8]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t2td"
-            style="top: 11%; left: 49%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[9]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
-                style="height: 16px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="t1td"
-            style="top: 12%; left: 18%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[10]" class="tower"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
-                style="height: 16px; filter: grayscale(100%) brightness(70%);">
-
-        </span>
-        <span data-tip="true" data-for="brbd"
-            style="top: 24%; left: 84%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img src="https://www.opendota.com/assets/images/dota2/map/badguys_rax.png"
-                alt="" appTowerColor [colorCode]="barracksDireSratus[0]" class="barrack"
-                style="height: 12px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="bmbd"
-            style="top: 24%; left: 88%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksDireSratus[1]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_rax.png" alt=""
-                style="height: 12px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="brmd"
-            style="top: 19.5%; left: 74.5%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksDireSratus[2]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_rax_angle.png" alt=""
-                style="height: 12px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="bmmd"
-            style="top: 22%; left: 77.5%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksDireSratus[3]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_rax_angle.png" alt=""
-                style="height: 12px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="brtd"
-            style="top: 10%; left: 74%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksDireSratus[4]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_rax.png" alt=""
-                style="height: 12px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" data-for="bmtd"
-            style="top: 14%; left: 74%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img appTowerColor [colorCode]="barracksDireSratus[5]" class="barrack"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_rax.png" alt=""
-                style="height: 12px; filter: contrast(150%);">
-
-        </span>
-        <span *ngIf="radiantWin" data-tip="true" data-for="ar"
-            style="top: 83%; left: 5%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img class="throne" appTowerColor [colorCode]="1"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_fort.png" alt=""
-                style="height: 25px; filter: grayscale(100%) brightness(70%);">
-
-        </span>
-        <span *ngIf="!radiantWin" data-tip="true" data-for="ar"
-            style="top: 83%; left: 5%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img class="throne" appTowerColor [colorCode]="0"
-                src="https://www.opendota.com/assets/images/dota2/map/goodguys_fort.png" alt=""
-                style="height: 25px; filter: grayscale(100%) brightness(70%);">
-
-        </span>
-
-
-        <span data-tip="true" *ngIf="!radiantWin" data-for="ad"
-            style="top: 9%; left: 84%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img class="throne" appTowerColor [colorCode]="1"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_fort.png" alt=""
-                style="height: 25px; filter: contrast(150%);">
-
-        </span>
-        <span data-tip="true" *ngIf="radiantWin" data-for="ad"
-            style="top: 9%; left: 84%; position: absolute; width: 0px; height: 0px;"
-            currentitem="false"><img class="throne" appTowerColor [colorCode]="0"
-                src="https://www.opendota.com/assets/images/dota2/map/badguys_fort.png" alt=""
-                style="height: 25px; filter: contrast(150%);">
-
-        </span>
-
+    <div class="map-wrapper">
+        <picture class="picture">
+            <source srcset="https://www.opendota.com/assets/images/dota2/map/detailed_733.webp" type="image/webp">
+            <source srcset="https://www.opendota.com/assets/images/dota2/map/detailed_733.jpg" type="image/jpeg">
+            <img src="https://www.opendota.com/assets/images/dota2/map/detailed_733.jpg" alt="Dota 2 Map - 7.33">
+        </picture>
+        <div class="tower-wrapper"
+            *ngIf="towerRadiantStatus && barracksRadiantSratus && towerDireStatus && barracksDireSratus">
+    
+    
+            <span data-tip="true" data-for="t4br" style="top: 82%; left: 12%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img class="tower" appTowerColor [colorCode]="towerRadiantStatus[0]"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt="" style="height: 16px; ">
+    
+            </span>
+    
+    
+            <span data-tip="true" data-for="t4tr" style="top: 79%; left: 8%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img class="tower" appTowerColor [colorCode]="towerRadiantStatus[1]"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt="" style="height: 16px; ">
+    
+            </span>
+            <span data-tip="true" data-for="t3br"
+                style="top: 83.5%; left: 23%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="towerRadiantStatus[2]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t2br" style="top: 85%; left: 46%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[3]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t1br" style="top: 82%; left: 75%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[4]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
+                    style="height: 16px; filter: grayscale(100%) brightness(70%);">
+    
+            </span>
+            <span data-tip="true" data-for="t3mr"
+                style="top: 71.5%; left: 18.5%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="towerRadiantStatus[5]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower_angle.png" alt=""
+                    style="height: 16px; filter: grayscale(100%) brightness(70%);">
+    
+            </span>
+            <span data-tip="true" data-for="t2mr"
+                style="top: 63%; left: 27.5%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="towerRadiantStatus[6]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower_angle.png" alt=""
+                    style="height: 16px; filter: grayscale(100%) brightness(70%);">
+    
+            </span>
+            <span data-tip="true" data-for="t1mr" style="top: 54%; left: 38%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[7]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower_angle.png" alt=""
+                    style="height: 16px; filter: grayscale(100%) brightness(70%);">
+    
+            </span>
+            <span data-tip="true" data-for="t3tr" style="top: 68%; left: 8%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[8]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t2tr" style="top: 53%; left: 9%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[9]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t1tr" style="top: 36%; left: 9.5%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerRadiantStatus[10]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_tower.png" alt=""
+                    style="height: 16px; filter: grayscale(100%) brightness(70%);">
+    
+            </span>
+            <span data-tip="true" data-for="brbr"
+                style="top: 80.5%; left: 20%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="barracksRadiantSratus[0]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax.png" alt=""
+                    style="height: 12px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="bmbr"
+                style="top: 84.5%; left: 20%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="barracksRadiantSratus[1]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax.png" alt=""
+                    style="height: 12px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="brmr" style="top: 72%; left: 15%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="barracksRadiantSratus[2]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax_angle.png" alt=""
+                    style="height: 12px; filter: grayscale(100%) brightness(70%);">
+    
+            </span>
+            <span data-tip="true" data-for="bmmr"
+                style="top: 74.5%; left: 18%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="barracksRadiantSratus[3]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax_angle.png" alt=""
+                    style="height: 12px; filter: grayscale(100%) brightness(70%);">
+    
+            </span>
+            <span data-tip="true" data-for="brtr"
+                style="top: 70.5%; left: 6.5%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="barracksRadiantSratus[4]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax.png" alt=""
+                    style="height: 12px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="bmtr"
+                style="top: 70.5%; left: 10.5%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="barracksRadiantSratus[5]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_rax.png" alt=""
+                    style="height: 12px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t4bd" style="top: 16%; left: 84%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[0]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t4td" style="top: 13%; left: 81%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[1]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t3bd"
+                style="top: 28%; left: 85.5%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="towerDireStatus[2]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t2bd" style="top: 45%; left: 85%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[3]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t1bd" style="top: 60%; left: 84%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[4]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t3md" style="top: 24%; left: 73%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[5]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower_angle.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t2md" style="top: 33%; left: 64%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[6]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower_angle.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t1md"
+                style="top: 43.5%; left: 51%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="towerDireStatus[7]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower_angle.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t3td"
+                style="top: 12.5%; left: 70%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="towerDireStatus[8]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t2td" style="top: 11%; left: 49%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[9]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
+                    style="height: 16px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="t1td" style="top: 12%; left: 18%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="towerDireStatus[10]" class="tower"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_tower.png" alt=""
+                    style="height: 16px; filter: grayscale(100%) brightness(70%);">
+    
+            </span>
+            <span data-tip="true" data-for="brbd" style="top: 24%; left: 84%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img src="https://www.opendota.com/assets/images/dota2/map/badguys_rax.png" alt=""
+                    appTowerColor [colorCode]="barracksDireSratus[0]" class="barrack"
+                    style="height: 12px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="bmbd" style="top: 24%; left: 88%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="barracksDireSratus[1]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_rax.png" alt=""
+                    style="height: 12px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="brmd"
+                style="top: 19.5%; left: 74.5%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="barracksDireSratus[2]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_rax_angle.png" alt=""
+                    style="height: 12px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="bmmd"
+                style="top: 22%; left: 77.5%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    appTowerColor [colorCode]="barracksDireSratus[3]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_rax_angle.png" alt=""
+                    style="height: 12px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="brtd" style="top: 10%; left: 74%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="barracksDireSratus[4]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_rax.png" alt=""
+                    style="height: 12px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" data-for="bmtd" style="top: 14%; left: 74%; position: absolute; width: 0px; height: 0px;"
+                currentitem="false"><img appTowerColor [colorCode]="barracksDireSratus[5]" class="barrack"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_rax.png" alt=""
+                    style="height: 12px; filter: contrast(150%);">
+    
+            </span>
+            <span *ngIf="radiantWin" data-tip="true" data-for="ar"
+                style="top: 83%; left: 5%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    class="throne" appTowerColor [colorCode]="1"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_fort.png" alt=""
+                    style="height: 25px; filter: grayscale(100%) brightness(70%);">
+    
+            </span>
+            <span *ngIf="!radiantWin" data-tip="true" data-for="ar"
+                style="top: 83%; left: 5%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    class="throne" appTowerColor [colorCode]="0"
+                    src="https://www.opendota.com/assets/images/dota2/map/goodguys_fort.png" alt=""
+                    style="height: 25px; filter: grayscale(100%) brightness(70%);">
+    
+            </span>
+    
+    
+            <span data-tip="true" *ngIf="!radiantWin" data-for="ad"
+                style="top: 9%; left: 84%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    class="throne" appTowerColor [colorCode]="1"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_fort.png" alt=""
+                    style="height: 25px; filter: contrast(150%);">
+    
+            </span>
+            <span data-tip="true" *ngIf="radiantWin" data-for="ad"
+                style="top: 9%; left: 84%; position: absolute; width: 0px; height: 0px;" currentitem="false"><img
+                    class="throne" appTowerColor [colorCode]="0"
+                    src="https://www.opendota.com/assets/images/dota2/map/badguys_fort.png" alt=""
+                    style="height: 25px; filter: contrast(150%);">
+    
+            </span>
+            <div class="hero-position">
+                <ng-template ngFor let-player [ngForOf]="players">
+                    <ng-template [ngIf]="player.lane===3 && player.isRadiant && player.lane_kills===radiantHardLaneCore">
+                        <div class="" style="position: absolute;   top: 111px; left: 0;">
+    
+                            <img [tooltip]="'Сложная / Core'" [heroOnMAp]="heroes[player.hero_id]" [isRadiant]="player.isRadiant"
+                                class="radiant-hardlane-core hero-icon"
+                                [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[player.hero_id].icon" alt="">
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="player.lane===3 && player.isRadiant && player.lane_kills!==radiantHardLaneCore">
+                        <div class="" style="position: absolute;    top: 80px; left: 0;">
+                            <img [tooltip]="'Сложная / Support'" [heroOnMAp]="heroes[player.hero_id]" [isRadiant]="player.isRadiant"
+                                class="radiant-hardlane-suppport hero-icon"
+                                [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[player.hero_id].icon" alt="">
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="player.lane===1 && player.isRadiant && player.lane_kills===radiantEasyLaneCore">
+                        <div class="" style="position: absolute; top:265px; right: 39px;">
+                            <img [tooltip]="'Легкая / Core'" [heroOnMAp]="heroes[player.hero_id]" [isRadiant]="player.isRadiant"
+                                class="radiant-easylane-core hero-icon"
+                                [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[player.hero_id].icon" alt="">
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="player.lane===1 && player.isRadiant && player.lane_kills!==radiantEasyLaneCore">
+                        <div class="" style="position: absolute;  top: 265px; right: 63px;">
+                            <img [tooltip]="'Легкая / Support'" [heroOnMAp]="heroes[player.hero_id]" [isRadiant]="player.isRadiant"
+                                class="radiant-easylane-support hero-icon"
+                                [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[player.hero_id].icon" alt="">
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="player.lane===2 && player.isRadiant">
+                        <div class="" style="position: absolute; top: 155px; right: 48%;">
+                            <img [tooltip]="'Средняя / Core'" [heroOnMAp]="heroes[player.hero_id]" [isRadiant]="player.isRadiant"
+                                class="radiant-midlane hero-icon"
+                                [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[player.hero_id].icon" alt="">
+                        </div>
+                    </ng-template>
+    
+                    <ng-template [ngIf]="player.lane===3 && !player.isRadiant && player.lane_kills===direHardLaneCore">
+                        <div class="" style="position: absolute; top: 20px; left: 50px;">
+                            <img class="dire-hardlane-core hero-icon" [tooltip]="'Легкая / Core'" [heroOnMAp]="heroes[player.hero_id]" [isRadiant]="player.isRadiant"
+                                [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[player.hero_id].icon" alt="">
+                        </div>
+                    </ng-template>
+    
+                    <ng-template [ngIf]="player.lane===3 && !player.isRadiant && player.lane_kills!==direHardLaneCore">
+                        <div class="" style="position: absolute; top: 20px;        left: 70px;">
+                            <img class="dire-hardlane-suppport hero-icon" [tooltip]="'Легкая / Support'" [heroOnMAp]="heroes[player.hero_id]" [isRadiant]="player.isRadiant"
+                                [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[player.hero_id].icon" alt="">
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="player.lane===1 && !player.isRadiant && player.lane_kills===direEasyLaneCore">
+                        <div class="" style="position: absolute;   right: 0; top:192px;">
+                            <img class="dire-easylane-core hero-icon" [tooltip]="'Сложная / Core'" [heroOnMAp]="heroes[player.hero_id]" [isRadiant]="player.isRadiant"
+                                [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[player.hero_id].icon" alt="">
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="player.lane===1 && !player.isRadiant && player.lane_kills!==direEasyLaneCore">
+                        <div class="" style="position: absolute;   right: 0; top: 165px;">
+                            <img class="dire-easylane-support hero-icon" [tooltip]="'Сложная / Support'" [heroOnMAp]="heroes[player.hero_id]" [isRadiant]="player.isRadiant"
+                                [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[player.hero_id].icon" alt="">
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="player.lane===2 && !player.isRadiant">
+                        <div class="" style="position: absolute;    top: 127px;   right: 48%;">
+                            <img class="dire-midlane hero-icon" [tooltip]="'Средняя / Core'" [heroOnMAp]="heroes[player.hero_id]" [isRadiant]="player.isRadiant"
+                                [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[player.hero_id].icon" alt="">
+                        </div>
+                    </ng-template>
+    
+                </ng-template>
+            </div>
+        </div>
     </div>
-</div>
 
+    <ng-template [ngIf]="radiantExpAvg && radiantGoldAvg">
+        <div class="container-fluid chart-wrapper" >
+
+            <canvas 
+              baseChart
+              class="chart"
+              [data]="lineChartData"
+              [options]="lineChartOptions"
+              [type]="lineChartType"
+          
+            ></canvas>
+        </div>
+       
+     
+    </ng-template>
+</div>
 
 
 <!-- <div class="hero-icons radiant-safe"></div>

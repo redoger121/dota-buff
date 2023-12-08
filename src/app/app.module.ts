@@ -2,7 +2,6 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
@@ -28,6 +27,10 @@ import { ToggleNavDirective } from './shared/directives/togle-header-button';
 import { ClipboardModule } from 'ngx-clipboard';
 import { MatchOverViewComponent } from './match-detail/match-overview/match-overview.component';
 import { ProcessingGameComponent } from './processing-game/processing-game.component';
+import { HeroOnMapToolTipComponent } from './shared/components/hero-on-map-tool-tip/hero-on-map-tool-tip.component';
+import { NgChartsModule } from 'ng2-charts';
+import { UsersAllMatchesComponent } from './user-detail-page/uses-all-matches/users-all-matches.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 registerLocaleData(localeRu);
 @NgModule({
   declarations: [
@@ -52,6 +55,8 @@ registerLocaleData(localeRu);
     ToggleNavDirective,
     MatchOverViewComponent,
     ProcessingGameComponent,
+    HeroOnMapToolTipComponent,
+    UsersAllMatchesComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,8 @@ registerLocaleData(localeRu);
     ReactiveFormsModule,
     ClipboardModule,
     FormsModule,
+    NgChartsModule,
+    NgxPaginationModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'ru' }],
   bootstrap: [AppComponent],

@@ -167,6 +167,22 @@ svg:not(:root) {
     overflow: hidden;
 }
 
-td {
-    overflow: hidden;
+/* td { */
+    /* overflow: hidden; */
+/* } */
+/* .small-tables{} */
+
+@media(max-width:991px){
+    .small-tables{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+@media(max-width: 694px){
+    .small-tables{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }

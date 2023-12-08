@@ -36,5 +36,60 @@ picture {
     width: 12px;
 }
 
+.hero-position {
+    width: 100%;
+    height: 100%;
+}
 
+.radiant-hardlane-core {
+    position: absolute;
+  
+}
+.hero-icon{
+    width: 26px;
+    height: 26px;
+}
+.radiant-hardlane-core,
+.radiant-hardlane-suppport,
+.radiant-easylane-core,
+.radiant-easylane-support,
+.radiant-midlane,
+.dire-midlane ,
+.dire-hardlane-core,
+.dire-hardlane-suppport,
+.dire-easylane-core,
+.dire-easylane-support {
+    position: relative;
+}
 
+.main-wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items:center;
+    max-height: 380px;
+    
+}
+.chart-wrapper{
+    max-width: calc(100% - 300px)!important;
+    padding: 0!important;
+}
+/* .chart{
+    width: calc(100% - 300px)!important;
+} */
+
+@media (max-width:1245px) {
+    .main-wrapper{
+        flex-direction: column;
+       flex-wrap: wrap;
+       max-height: 700px;
+       align-items: center;
+    }
+    .chart{
+        width: 100% !important;
+    }
+    .chart-wrapper{
+        max-width:80% !important;
+    }
+}

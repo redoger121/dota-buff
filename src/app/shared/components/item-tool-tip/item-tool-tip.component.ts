@@ -1,4 +1,10 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { ItemFullInfo, ItemInfo } from '../../models/items-full-info.model';
 
 @Component({
@@ -6,7 +12,7 @@ import { ItemFullInfo, ItemInfo } from '../../models/items-full-info.model';
   templateUrl: './item-tool-tip.component.html',
   styleUrls: ['./item-tool-tip.component.css'],
 })
-export class ItemToolTipComponent implements OnInit {
+export class ItemToolTipComponent implements OnInit, AfterViewInit {
   @Input() itemName!: string;
   @Input() allItems!: ItemFullInfo;
   @Input() top!: number;
@@ -20,7 +26,8 @@ export class ItemToolTipComponent implements OnInit {
   ngOnInit(): void {
     this.elRef.nativeElement.style.left =
       this.left - this.elRef.nativeElement.getBoundingClientRect().width + 'px';
-    this.elRef.nativeElement.style.top = this.top + document.documentElement.scrollTop+ 'px';
+    this.elRef.nativeElement.style.top =
+      this.top + document.documentElement.scrollTop + 'px';
 
     this.itemDesc = this.allItems[this.itemName];
     if (this.itemDesc.components) {
@@ -31,6 +38,20 @@ export class ItemToolTipComponent implements OnInit {
     if (this.itemDesc.cost > this.componentsCost && this.itemDesc.components) {
       this.recipeCost = this.itemDesc.cost - this.componentsCost;
       this.isRecipe = true;
+    }
+  }
+
+  ngAfterViewInit() {
+    let elHeigth = this.elRef.nativeElement.offsetHeight;
+    console.log(this.elRef.nativeElement.offsetHeight);
+    // console.log(this.abilityDesc.nativeElement)
+    if (elHeigth + this.top > window.innerHeight) {
+      this.elRef.nativeElement.style.top =
+        this.top +
+        document.documentElement.scrollTop -
+        (elHeigth + this.top - window.innerHeight) +
+        'px';
+      console.log(this.elRef.nativeElement.style.top);
     }
   }
 }

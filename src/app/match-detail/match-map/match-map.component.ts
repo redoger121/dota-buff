@@ -1,16 +1,138 @@
-import { Component, Input } from "@angular/core";
-
+import { Component, Input, OnInit } from '@angular/core';
+import { Player } from 'src/app/shared/models/match-full-info.model';
+import {
+  DataStorageService,
+  HeroResponseData,
+} from 'src/app/shared/services/data-storage.service';
+import { ViewChild } from '@angular/core';
+import { Chart, ChartConfiguration, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+import Annotation from 'chartjs-plugin-annotation';
+import { externalTooltipHandler } from './chart-tooltip';
 @Component({
-    selector:'app-match-map',
-    templateUrl:'./match-map.component.html',
-    styleUrls:['./match-map.component.css']
+  selector: 'app-match-map',
+  templateUrl: './match-map.component.html',
+  styleUrls: ['./match-map.component.css'],
 })
+export class MatchMapComponetn implements OnInit {
+  @Input() towerRadiantStatus!: number[];
+  @Input() barracksRadiantSratus!: number[];
+  @Input() towerDireStatus!: number[];
+  @Input() barracksDireSratus!: number[];
+  @Input() radiantWin!: boolean;
+  @Input() players!: Player[];
+  @Input() radiantHardLaneCore!: number;
+  @Input() radiantEasyLaneCore!: number;
+  @Input() direHardLaneCore!: number;
+  @Input() direEasyLaneCore!: number;
+  @Input() radiantGoldAvg?: number[];
+  @Input() radiantExpAvg?: number[];
 
-export class MatchMapComponetn{
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
-@Input() towerRadiantStatus!:number[]
-@Input() barracksRadiantSratus!:number[]
-@Input() towerDireStatus!:number[]
-@Input() barracksDireSratus!:number[]
-@Input() radiantWin!:boolean
+  public lineChartData!: ChartConfiguration['data'];
+  public lineChartOptions!: ChartConfiguration['options'];
+  get heroes(): HeroResponseData {
+    return this.dataStorageService.heroes;
+  }
+
+  constructor(private dataStorageService: DataStorageService) {
+    Chart.register(Annotation);
+  }
+
+  ngOnInit(): void {
+    if (this.radiantGoldAvg && this.radiantExpAvg) {
+      let amountOfMinutesInChart: number[] = [];
+      this.radiantGoldAvg.forEach((el, index) => {
+        amountOfMinutesInChart.push(index);
+      });
+
+      this.lineChartData = {
+        datasets: [
+          {
+            data: this.radiantGoldAvg!,
+            label: 'Золото',
+            backgroundColor: 'transparent',
+            borderColor: 'rgba(255,255,0,1)',
+            pointBackgroundColor: 'rgba(148,159,177,1)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+            fill: 'origin',
+          },
+          {
+            data: this.radiantExpAvg!,
+            label: 'Опыт',
+            backgroundColor: 'transparent',
+            borderColor: 'rgba(100,149,237  ,1)',
+            pointBackgroundColor: 'rgba(77,83,96,1)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(77,83,96,1)',
+            fill: 'origin',
+          },
+        ],
+        labels: amountOfMinutesInChart,
+      };
+
+      this.lineChartOptions = {
+        scales: {
+          // We use this empty structure as a placeholder for dynamic theming.
+          y: {
+            position: 'left',
+            grid: {
+              drawOnChartArea: true, // only want the grid lines for one axis to show up
+              color: 'grey',
+            },
+          },
+        },
+        responsive: true,
+        interaction: {
+          mode: 'index',
+          intersect: false
+        },
+        plugins: {
+          title:{display:true},
+          tooltip: {
+            enabled: false,
+            position: 'nearest',
+            external: externalTooltipHandler,
+            // callbacks: {
+            //   footer: this.footer,
+            // }
+          },
+          legend: { display: false },
+          annotation: {
+            annotations: [
+              {
+                type: 'box',
+                drawTime: 'beforeDatasetsDraw',
+                yScaleID: 'y',
+                yMax: 0,
+                backgroundColor: 'rgba(71,0,17,0.2)',
+              },
+              {
+                type: 'box',
+                drawTime: 'beforeDatasetsDraw',
+                yScaleID: 'y',
+                yMin: 0,
+                backgroundColor: 'rgba(0,179,0, 0.2)',
+              },
+            ],
+          },
+        },
+      };
+    }
+  }
+
+  footer(tooltipItems: any[]) {
+    let sum = 0;
+
+    tooltipItems.forEach(function (tooltipItem) {
+      sum += tooltipItem.parsed.y;
+    });
+    return 'Sum: ' + sum;
+  }
+
+  public lineChartType: ChartType = 'line';
 }

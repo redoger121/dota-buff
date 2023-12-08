@@ -7,6 +7,7 @@ import { UsersListComponent } from './users/users-list/users-list.component';
 import { MatchDetailComponent } from './match-detail/match-detail.component';
 import { MatchOverViewComponent } from './match-detail/match-overview/match-overview.component';
 import { ProcessingGameComponent } from './processing-game/processing-game.component';
+import { UsersAllMatchesComponent } from './user-detail-page/uses-all-matches/users-all-matches.component';
 
 const routes: Routes = [
   {
@@ -30,14 +31,16 @@ const routes: Routes = [
     ],
   },
 
-  {path:'match/processing-game', component: ProcessingGameComponent},
-  {path:'processing-game/:id', component: ProcessingGameComponent},
-
+  { path: 'match/processing-game', component: ProcessingGameComponent },
+  { path: 'processing-game/:id', component: ProcessingGameComponent },
 
   {
     path: 'user-datail/:id',
     component: UserDetailPageComponent,
-    children: [{ path: 'overview', component: UserMatchesOverwievComponent }],
+    children: [
+      { path: 'overview', component: UserMatchesOverwievComponent },
+      { path: 'all-matches', component: UsersAllMatchesComponent },
+    ],
   },
 ];
 

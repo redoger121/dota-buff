@@ -1,4 +1,3 @@
-
 <div class="row justify-content-center" *ngIf="players">
 
 
@@ -755,8 +754,18 @@
 
 
 
-        <app-match-map [towerRadiantStatus]="towerRadiantStatus" [barracksRadiantSratus]="barracksRadiantSratus"
-            [radiantWin]="radiantWin" [towerDireStatus]="towerDireStatus"
-            [barracksDireSratus]="barracksDireSratus"></app-match-map>
+        <app-match-map 
+        [towerRadiantStatus]="towerRadiantStatus" 
+        [barracksRadiantSratus]="barracksRadiantSratus"
+        [radiantWin]="radiantWin" 
+        [towerDireStatus]="towerDireStatus"
+        [barracksDireSratus]="barracksDireSratus"
+        [players]="players" 
+        [radiantEasyLaneCore]="radiantEasyLaneCore"
+        [radiantHardLaneCore]="radiantHardLaneCore"
+        [direHardLaneCore]="direHardLaneCore"
+        [direEasyLaneCore]="direEasyLaneCore"
+        [radiantExpAvg]="radiantExpAvg"
+        [radiantGoldAvg]="radiantGoldAvg"></app-match-map>
     </div>
 </div>

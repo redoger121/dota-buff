@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserWinLose } from './user-win-loose-statistic.model';
 import { UserAccountInfo } from './user-account-info.model';
 import { Observable, map, tap } from 'rxjs';
-import { MatchShortInfo } from '../shared/models/match-short-info.model';
+import { MatchInfoWithItems, MatchShortInfo } from '../shared/models/match-short-info.model';
 import { DataStorageService } from '../shared/services/data-storage.service';
 import { UserPlayedWith } from '../shared/models/user-played-with.model';
 import { HeroPlayedStatistic } from '../shared/models/hero-played-statistic.model';
@@ -100,5 +100,32 @@ export class UserDetailPageServise {
           return heroes;
         })
       );
+  }
+
+  fetchAllUsersMatches(userId: number) {
+    let matchesParams = new HttpParams();
+    matchesParams = matchesParams.append('project', 'item_0');
+    matchesParams = matchesParams.append('project', 'item_1');
+    matchesParams = matchesParams.append('project', 'item_2');
+    matchesParams = matchesParams.append('project', 'item_3');
+    matchesParams = matchesParams.append('project', 'item_4');
+    matchesParams = matchesParams.append('project', 'item_5');
+    matchesParams = matchesParams.append('project', 'average_rank');
+    matchesParams = matchesParams.append('project', 'party_size');
+    matchesParams = matchesParams.append('project', 'duration');
+    matchesParams = matchesParams.append('project', 'game_mode');
+    matchesParams = matchesParams.append('project', 'lobby_type');
+    matchesParams = matchesParams.append('project', 'start_time');
+    matchesParams = matchesParams.append('project', 'hero_id');
+    matchesParams = matchesParams.append('project', 'version');
+    matchesParams = matchesParams.append('project', 'kills');
+    matchesParams = matchesParams.append('project', 'deaths');
+    matchesParams = matchesParams.append('project', 'assists');
+    matchesParams = matchesParams.append('project', 'skill');
+
+    return this.http.get<MatchInfoWithItems[]>(
+      'https://api.opendota.com/api/players/' + userId + '/matches',
+      { params: matchesParams }
+    );
   }
 }
