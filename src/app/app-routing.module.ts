@@ -17,6 +17,7 @@ const routes: Routes = [
       {
         path: ':username',
         component: UsersListComponent,
+        // resolve:[userListsResolver]
       },
     ],
   },

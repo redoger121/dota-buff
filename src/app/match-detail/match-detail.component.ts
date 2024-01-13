@@ -28,7 +28,7 @@ export class MatchDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   matchId!: number;
-  version!: number | null;
+  version: number | null=1;
   ranksLocalized = localizedRanks;
   radiantWin!: boolean;
   radiantScore!: number;

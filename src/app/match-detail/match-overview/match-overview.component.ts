@@ -58,9 +58,12 @@ export class MatchOverViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    console.log(this.itemFullInfo)
     this.matchesDetailService.matchInfo.subscribe((response) => {
       this.version = response.version;
       this.players = response.players;
+
       console.log(this.players)
       this.radiantGoldAvg = response.radiant_gold_adv;
       this.radiantExpAvg = response.radiant_xp_adv;

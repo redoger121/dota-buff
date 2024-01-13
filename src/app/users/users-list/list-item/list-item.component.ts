@@ -10,7 +10,7 @@ import { ProPlayer } from '../../pro-players.mode';
 })
 export class ListItemComponent {
   @Input('user') element!: User;
-  @Input('proPlayers') proPlayers!:ProPlayer[];
+  // @Input('proPlayers') proPlayers!:ProPlayer[];
   constructor(private route: Router) {}
 
   goToUserDetailPage(userId: number) {

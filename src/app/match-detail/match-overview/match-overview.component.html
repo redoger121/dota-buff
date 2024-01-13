@@ -78,34 +78,93 @@
 
 
                                             <div *ngIf="player.item_0" class="item-container">
-                                                <img class="main-item" [tooltip]="itemIds[player.item_0] "
-                                                    [allItemsDesc]="itemFullInfo"
-                                                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_0]].img" />
+
+                                                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_0]]">
+                                                    <img class="main-item" [tooltip]="itemIds[player.item_0] "
+                                                        [allItemsDesc]="itemFullInfo"
+                                                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_0]].img" />
+                                                </ng-template>
+
+                                                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_0]]">
+
+                                                    <img class="main-item"
+                                                        src="https://www.opendota.com/assets/images/default_attack.png" />
+                                                </ng-template>
                                             </div>
+
+
                                             <div *ngIf="player.item_1" class="item-container">
-                                                <img class="main-item" [tooltip]="itemIds[player.item_1] "
-                                                    [allItemsDesc]="itemFullInfo"
-                                                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_1]].img" />
+                                                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_1]]">
+                                                    <img class="main-item" [tooltip]="itemIds[player.item_1] "
+                                                        [allItemsDesc]="itemFullInfo"
+                                                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_1]].img" />
+
+                                                </ng-template>
+                                                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_1]]">
+
+                                                    <img class="main-item"
+                                                        src="https://www.opendota.com/assets/images/default_attack.png" />
+                                                </ng-template>
                                             </div>
+
+
                                             <div *ngIf="player.item_2" class="item-container">
-                                                <img class="main-item" [tooltip]="itemIds[player.item_2] "
-                                                    [allItemsDesc]="itemFullInfo"
-                                                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_2]].img" />
+                                                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_2]]">
+                                                    <img class="main-item" [tooltip]="itemIds[player.item_2] "
+                                                        [allItemsDesc]="itemFullInfo"
+                                                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_2]].img" />
+                                                </ng-template>
+                                                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_2]]">
+
+                                                    <img class="main-item"
+                                                        src="https://www.opendota.com/assets/images/default_attack.png" />
+                                                </ng-template>
                                             </div>
+
+
                                             <div *ngIf="player.item_3" class="item-container">
-                                                <img class="main-item" [tooltip]="itemIds[player.item_3] "
-                                                    [allItemsDesc]="itemFullInfo"
-                                                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_3]].img" />
+                                                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_3]]">
+                                                    <img class="main-item" [tooltip]="itemIds[player.item_3] "
+                                                        [allItemsDesc]="itemFullInfo"
+                                                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_3]].img" />
+                                                </ng-template>
+                                                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_3]]">
+
+                                                    <img class="main-item"
+                                                        src="https://www.opendota.com/assets/images/default_attack.png" />
+                                                </ng-template>
                                             </div>
+
+
                                             <div *ngIf="player.item_4" class="item-container">
-                                                <img class="main-item" [tooltip]="itemIds[player.item_4] "
-                                                    [allItemsDesc]="itemFullInfo"
-                                                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_4]].img" />
+                                                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_4]]">
+                                                    <img class="main-item" [tooltip]="itemIds[player.item_4] "
+                                                        [allItemsDesc]="itemFullInfo"
+                                                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_4]].img" />
+
+                                                </ng-template>
+                                                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_4]]">
+
+                                                    <img class="main-item"
+                                                        src="https://www.opendota.com/assets/images/default_attack.png" />
+                                                </ng-template>
                                             </div>
+
+
+
                                             <div *ngIf="player.item_5" class="item-container">
-                                                <img class="main-item" [tooltip]="itemIds[player.item_5] "
-                                                    [allItemsDesc]="itemFullInfo"
-                                                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_5]].img" />
+                                                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_5]]">
+
+                                                    <img class="main-item" [tooltip]="itemIds[player.item_5] "
+                                                        [allItemsDesc]="itemFullInfo"
+                                                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_5]].img" />
+                                                </ng-template>
+                                                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_5]]">
+
+                                                    <img class="main-item"
+                                                        src="https://www.opendota.com/assets/images/default_attack.png" />
+                                                </ng-template>
+
                                             </div>
 
                                         </div>
@@ -137,16 +196,41 @@
                                             </path>
                                         </svg>
                                         <div *ngIf="player.backpack_0" class="item-container">
-                                            <img [tooltip]="itemIds[player.backpack_0] " [allItemsDesc]="itemFullInfo"
-                                                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.backpack_0]].img" />
+                                            <ng-template [ngIf]="itemFullInfo[itemIds[player.backpack_0]]">
+                                                <img [tooltip]="itemIds[player.backpack_0] "
+                                                    [allItemsDesc]="itemFullInfo"
+                                                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.backpack_0]].img" />
+                                            </ng-template>
+                                            <ng-template [ngIf]="!itemFullInfo[itemIds[player.backpack_0]]">
+
+                                                <img 
+                                                    src="https://www.opendota.com/assets/images/default_attack.png" />
+                                            </ng-template>
+
                                         </div>
                                         <div *ngIf="player.backpack_1" class="item-container">
-                                            <img [tooltip]="itemIds[player.backpack_1] " [allItemsDesc]="itemFullInfo"
-                                                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.backpack_1]].img" />
+                                            <ng-template [ngIf]="itemFullInfo[itemIds[player.backpack_1]]">
+                                                <img [tooltip]="itemIds[player.backpack_0] "
+                                                    [allItemsDesc]="itemFullInfo"
+                                                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.backpack_1]].img" />
+                                            </ng-template>
+                                            <ng-template [ngIf]="!itemFullInfo[itemIds[player.backpack_1]]">
+
+                                                <img 
+                                                    src="https://www.opendota.com/assets/images/default_attack.png" />
+                                            </ng-template>
                                         </div>
                                         <div *ngIf="player.backpack_2" class="item-container">
-                                            <img [tooltip]="itemIds[player.backpack_2] " [allItemsDesc]="itemFullInfo"
-                                                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.backpack_2]].img" />
+                                            <ng-template [ngIf]="itemFullInfo[itemIds[player.backpack_2]]">
+                                                <img [tooltip]="itemIds[player.backpack_2] "
+                                                    [allItemsDesc]="itemFullInfo"
+                                                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.backpack_0]].img" />
+                                            </ng-template>
+                                            <ng-template [ngIf]="!itemFullInfo[itemIds[player.backpack_2]]">
+
+                                                <img 
+                                                    src="https://www.opendota.com/assets/images/default_attack.png" />
+                                            </ng-template>
                                         </div>
 
                                     </div>
@@ -155,9 +239,16 @@
                                 <td>
 
                                     <div *ngIf="player.item_neutral" class="item-container">
-                                        <img class="neutral-item" [tooltip]="itemIds[player.item_neutral] "
-                                            [allItemsDesc]="itemFullInfo"
-                                            [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_neutral]].img" />
+                                        <ng-template [ngIf]="itemFullInfo[itemIds[player.item_neutral]]">
+
+                                            <img class="neutral-item" [tooltip]="itemIds[player.item_neutral] "
+                                                [allItemsDesc]="itemFullInfo"
+                                                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_neutral]].img" />
+                                        </ng-template>
+                                        <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_neutral]]">
+                                            <img  class="neutral-item"
+                                            src="https://www.opendota.com/assets/images/default_attack.png" />
+                                        </ng-template>
                                     </div>
 
                                 </td>
@@ -754,18 +845,10 @@
 
 
 
-        <app-match-map 
-        [towerRadiantStatus]="towerRadiantStatus" 
-        [barracksRadiantSratus]="barracksRadiantSratus"
-        [radiantWin]="radiantWin" 
-        [towerDireStatus]="towerDireStatus"
-        [barracksDireSratus]="barracksDireSratus"
-        [players]="players" 
-        [radiantEasyLaneCore]="radiantEasyLaneCore"
-        [radiantHardLaneCore]="radiantHardLaneCore"
-        [direHardLaneCore]="direHardLaneCore"
-        [direEasyLaneCore]="direEasyLaneCore"
-        [radiantExpAvg]="radiantExpAvg"
-        [radiantGoldAvg]="radiantGoldAvg"></app-match-map>
+        <app-match-map [towerRadiantStatus]="towerRadiantStatus" [barracksRadiantSratus]="barracksRadiantSratus"
+            [radiantWin]="radiantWin" [towerDireStatus]="towerDireStatus" [barracksDireSratus]="barracksDireSratus"
+            [players]="players" [radiantEasyLaneCore]="radiantEasyLaneCore" [radiantHardLaneCore]="radiantHardLaneCore"
+            [direHardLaneCore]="direHardLaneCore" [direEasyLaneCore]="direEasyLaneCore" [radiantExpAvg]="radiantExpAvg"
+            [radiantGoldAvg]="radiantGoldAvg"></app-match-map>
     </div>
 </div>

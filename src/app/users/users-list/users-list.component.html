@@ -1,21 +1,23 @@
 <div class="" *ngIf="proPlayersAreFound && proPlayersAreReady">
     <table class="table">
         <thead>
-    
+
             <tr>
                 <th>Игрок</th>
                 <th>Команда</th>
             </tr>
-    
+
         </thead>
         <tr *ngFor="let player of proPlayers">
             <td>
                 <div class="table-first-column--wrapper">
                     <img [src]="player.avatar" alt="pro-player avatar">
-                    <a (click)="goToUserDetailPage(player.account_id)" >{{player.name}}</a>
+                    <a (click)="goToUserDetailPage(player.account_id)">{{player.name}}</a>
                 </div>
             </td>
-            <td><p>{{player.team_name}}</p></td>
+            <td>
+                <p>{{player.team_name}}</p>
+            </td>
         </tr>
     </table>
 </div>
@@ -23,11 +25,12 @@
 <div class="" *ngIf="!proPlayersAreFound  && proPlayersAreReady">
     <h3>Профессиональных игроков не найдено</h3>
 </div>
+<app-loading-spiner *ngIf="!proPlayersAreFound && !proPlayersAreReady"></app-loading-spiner>
 
 <app-loading-spiner *ngIf="!usersAreReady"></app-loading-spiner>
 
 <div *ngIf="usersAreReady">
-    <span>Игкроко найдено: {{usersAmount}}</span>
+    <span>Игкроков найдено: {{usersAmount}}</span>
     <div class="user-list">
         <app-list-item *ngFor="let user of users" [user]="user"></app-list-item>
     </div>

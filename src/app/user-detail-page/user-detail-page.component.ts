@@ -4,6 +4,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { UserWinLose } from './user-win-loose-statistic.model';
 import { Subscription } from 'rxjs';
 import { UserAccountInfo } from './user-account-info.model';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../store/app.reducer';
+import * as UserDetailPageActions from './store/user-detail-page.actions';
 
 @Component({
   selector: 'app-user-detail-page',
@@ -12,17 +15,18 @@ import { UserAccountInfo } from './user-account-info.model';
 })
 export class UserDetailPageComponent implements OnInit {
   constructor(
-    private userDetailService: UserDetailPageServise,
+    private store: Store<fromApp.AppState>,
     private route: ActivatedRoute
   ) {}
+  routSubscription!: Subscription;
 
-  userId!: number;
-
-  userAccountInfo!: UserAccountInfo;
-
- 
   ngOnInit(): void {
-   
-    this.userId = this.route.snapshot.params['id'];
+    this.route.params.subscribe((params: Params) => {
+      this.store.dispatch(
+        UserDetailPageActions.SetPlayerId({ userId: params['id'] })
+      );
+      this.store.dispatch(UserDetailPageActions.FetchPlayerAccountInfo());
+      this.store.dispatch(UserDetailPageActions.FetchPlayerWinLoseStat());
+    });
   }
 }

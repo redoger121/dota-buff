@@ -31,6 +31,14 @@ import { HeroOnMapToolTipComponent } from './shared/components/hero-on-map-tool-
 import { NgChartsModule } from 'ng2-charts';
 import { UsersAllMatchesComponent } from './user-detail-page/uses-all-matches/users-all-matches.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './store/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { PlayersEffects } from './users/store/users.effects';
+import { UsersDetailPageEffects } from './user-detail-page/store/users-detail-page.effects';
 registerLocaleData(localeRu);
 @NgModule({
   declarations: [
@@ -67,6 +75,10 @@ registerLocaleData(localeRu);
     FormsModule,
     NgChartsModule,
     NgxPaginationModule,
+    StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([PlayersEffects, UsersDetailPageEffects]),
+    StoreDevtoolsModule.instrument({ logOnly: environment.production }),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'ru' }],
   bootstrap: [AppComponent],
