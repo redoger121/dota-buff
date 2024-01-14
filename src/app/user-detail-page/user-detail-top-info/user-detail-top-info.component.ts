@@ -1,24 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription, forkJoin, from, map, mergeMap } from 'rxjs';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, map,  } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { UserDetailPageServise } from '../user-detail-page.service';
+
 import { UserAccountInfo } from '../user-account-info.model';
 import { UserWinLose } from '../user-win-loose-statistic.model';
 import { starsUrsl, rankUrls } from '../../shared/local-data/ranksUrls';
 import * as fromApp from '../../store/app.reducer';
-import * as UserDetailPageActions from '../store/user-detail-page.actions';
+
+
+
 @Component({
   selector: 'app-user-detail-top-info',
   templateUrl: './user-detail-top-info.component.html',
   styleUrls: ['./user-detail-top-info.component.css'],
 })
-export class UserDetailTopInfoComponent implements OnInit {
-  // @Input() userId!: number;
+export class UserDetailTopInfoComponent implements OnInit, OnDestroy {
   constructor(
-    private userDetailService: UserDetailPageServise,
-    private route: ActivatedRoute,
     private store: Store<fromApp.AppState>
   ) {}
 
@@ -31,25 +29,15 @@ export class UserDetailTopInfoComponent implements OnInit {
   leaderboard_rank!: number;
   userWinLoseStat!: UserWinLose;
   percentOfWins!: string;
+  accountInfoReady = false;
+  winLoseReady = false;
   ngOnInit(): void {
-    this.userId = this.route.snapshot.params['id'];
 
-    // this.paramsSubscription = this.route.params
-    //   .pipe(
-    //     mergeMap((params: Params) => {
-    //       this.userId = params['id'];
-    //       const userWinLoseStatObs = this.userDetailService.getUserWinLoseStat(
-    //         this.userId
-    //       );
-    //       const userAccountInfoObs =
-    //         this.userDetailService.fetchtUserAccountInfo(this.userId);
-    //       return forkJoin([userWinLoseStatObs, userAccountInfoObs]);
-    //     })
-    //   )
     this.paramsSubscription = this.store
       .select('usersDetailPage')
       .pipe(
         map((userDetailPageState) => {
+         
           return {
             winLose: userDetailPageState.playerWinLoseInfo,
             accountInfo: userDetailPageState.playerAccountInfo,
@@ -65,6 +53,8 @@ export class UserDetailTopInfoComponent implements OnInit {
         ).toFixed(2);
         //записываем информацию профиля
         this.userAccountInfo = response.accountInfo;
+
+      
         // разбираем рэйтинг пользователя состоящий из 2 цифр, для отображения иконки звания
         if (response.accountInfo.rank_tier) {
           let rankTier: number = response.accountInfo.rank_tier;
@@ -85,6 +75,13 @@ export class UserDetailTopInfoComponent implements OnInit {
         } else {
           this.rank = rankUrls[0];
         }
+        if(Object.keys(this.userAccountInfo).length!==0 && Object.keys(this.userWinLoseStat).length!==0){
+          this.winLoseReady = true;
+          this.accountInfoReady = true;
+        }
       });
+  }
+  ngOnDestroy(): void {
+    this.paramsSubscription.unsubscribe()
   }
 }

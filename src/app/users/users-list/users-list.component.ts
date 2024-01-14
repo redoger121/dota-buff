@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, switchMap, tap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { User } from '../user-model';
 import { ProPlayer } from '../pro-players.mode';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription, mergeMap, tap } from 'rxjs';
-import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
 import * as PlayersAction from '../store/users.actions';
+
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -28,6 +29,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
   proPlayersAreReady = false;
   proPlayersAreFound = false;
   paramsSubscription!: Subscription;
+
   ngOnInit(): void {
     this.paramsSubscription = this.rout.params
       .pipe(
@@ -36,14 +38,13 @@ export class UsersListComponent implements OnInit, OnDestroy {
           this.store.dispatch(
             PlayersAction.SetPlayersSearchBar({ searchBar: this.findByName })
           );
-          this.store.dispatch(PlayersAction.FetchUsers());
-          this.store.dispatch(PlayersAction.FetchProPlayers());
         }),
-        mergeMap(() => {
+        switchMap(() => {
           return this.store.select('players');
-        }, 1)
+        })
       )
       .subscribe((usersState) => {
+        console.log(usersState);
         this.users = usersState.users;
         this.usersAreReady = usersState.playersAreReady;
         this.usersAmount = usersState.users.length;
@@ -56,10 +57,14 @@ export class UsersListComponent implements OnInit, OnDestroy {
         }
       });
   }
+
   goToUserDetailPage(userId: number) {
     this.router.navigate(['/user-datail', userId, 'overview']);
   }
+
   ngOnDestroy(): void {
-    this.paramsSubscription.unsubscribe();
+    if (this.paramsSubscription) {
+      this.paramsSubscription.unsubscribe();
+    }
   }
 }

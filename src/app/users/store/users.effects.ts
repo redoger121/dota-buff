@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import * as PlayersActions from './users.actions';
 
 import * as fromApp from '../../store/app.reducer';
-import { map, switchMap, withLatestFrom } from 'rxjs';
+import { map, mergeMap, switchMap, take, withLatestFrom } from 'rxjs';
 import { User } from '../user-model';
 import { ProPlayer } from '../pro-players.mode';
 
@@ -13,14 +13,15 @@ import { ProPlayer } from '../pro-players.mode';
 export class PlayersEffects {
   fetchUsers = createEffect(() =>
     this.actions$.pipe(
-      ofType(PlayersActions.FetchUsers),
+      ofType(PlayersActions.SetPlayersSearchBar),
       withLatestFrom(this.store.select('players')),
       switchMap(([actionData, playersState]) => {
-        console.log(playersState);
+        // console.log(playersState);
         return this.http.get<User[]>('https://api.opendota.com/api/search', {
           params: new HttpParams().set('q', playersState.searchBar),
         });
       }),
+     
       map((users) => {
         console.log(users);
         return PlayersActions.SetUsers({ users: users });
@@ -30,7 +31,7 @@ export class PlayersEffects {
 
   fetchProPlayers = createEffect(() =>
     this.actions$.pipe(
-      ofType(PlayersActions.FetchProPlayers),
+      ofType(PlayersActions.SetPlayersSearchBar),
       withLatestFrom(this.store.select('players')),
       switchMap(([actionData, playersState]) => {
         // console.log(playersState)
@@ -56,12 +57,15 @@ export class PlayersEffects {
             })
           );
       }),
+      
       map((proPlayers) => {
         //   console.log(users);
         return PlayersActions.SetProPlayers({ proPlayers: proPlayers });
       })
     )
   );
+
+
 
   constructor(
     private actions$: Actions,

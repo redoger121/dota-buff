@@ -39,6 +39,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { PlayersEffects } from './users/store/users.effects';
 import { UsersDetailPageEffects } from './user-detail-page/store/users-detail-page.effects';
+import { SharedEffects } from './shared/store/shared.effects';
 registerLocaleData(localeRu);
 @NgModule({
   declarations: [
@@ -76,7 +77,7 @@ registerLocaleData(localeRu);
     NgChartsModule,
     NgxPaginationModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([PlayersEffects, UsersDetailPageEffects]),
+    EffectsModule.forRoot([PlayersEffects, UsersDetailPageEffects,SharedEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
   ],

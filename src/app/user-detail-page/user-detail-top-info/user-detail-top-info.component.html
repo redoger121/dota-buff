@@ -1,20 +1,22 @@
 <div class="body">
 
-    <div *ngIf="userAccountInfo && userWinLoseStat">
-    
+    <div *ngIf="accountInfoReady && winLoseReady">
+
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-10">
                     <div class="main-wrapper">
-    
+
                         <div class="user-info__wrapper">
-    
-                            <img class="user-avatar" [src]="userAccountInfo.profile.avatarfull" alt="user avatar">
+                           
+
+                                <img class="user-avatar" [src]="userAccountInfo.profile.avatarfull" alt="user avatar">
+                          
                             <div class="main-info">
-    
+
                                 <p class="username">{{userAccountInfo.profile.personaname}}</p>
                                 <div class="win-lose__wrapper">
-    
+
                                     <div class="win-lose">
                                         <p class="main-text__14px">Побед</p>
                                         <p class="win-text">{{userWinLoseStat.win}}</p>
@@ -34,46 +36,48 @@
                             <img class="rank" [src]="rank" alt="user rank">
                             <div *ngIf="stars">
                                 <img class="star" [src]="stars" alt="rank stars">
-    
+
                             </div>
-                            <span class="rank-numbers" *ngIf="userAccountInfo.leaderboard_rank">{{userAccountInfo.leaderboard_rank}}</span>
+                            <span class="rank-numbers"
+                                *ngIf="userAccountInfo.leaderboard_rank">{{userAccountInfo.leaderboard_rank}}</span>
                         </div>
-    
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-
+<div *ngIf="!accountInfoReady && !winLoseReady">
+    <app-loading-spiner></app-loading-spiner>
+</div>
     <div class="container custom-container">
-       
-
-                <nav class="navbar navbar-expand-lg  ">
-                    <div class="container-fluid">
-                     
-                    
-                      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                          <li class="nav-item" >
-                            <a class="nav-link" routerLinkActive="active"  [routerLink]="['overview']" aria-current="page" >Обзор</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" routerLinkActive="active" [routerLink]="['all-matches']" >Матчи</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" >Герои</a>
-                          </li>
-                         
-                        </ul>
-                      </div>
-                    </div>
-                  </nav>
 
 
-      
+        <nav class="navbar navbar-expand-lg  ">
+            <div class="container-fluid">
+
+
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['overview']"
+                                aria-current="page">Обзор</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['all-matches']">Матчи</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Герои</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+
     </div>
 
 
 </div>
-

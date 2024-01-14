@@ -1,131 +1,134 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { UserWinLose } from './user-win-loose-statistic.model';
-import { UserAccountInfo } from './user-account-info.model';
-import { Observable, map, tap } from 'rxjs';
-import { MatchInfoWithItems, MatchShortInfo } from '../shared/models/match-short-info.model';
-import { DataStorageService } from '../shared/services/data-storage.service';
-import { UserPlayedWith } from '../shared/models/user-played-with.model';
-import { HeroPlayedStatistic } from '../shared/models/hero-played-statistic.model';
+//После внедрения NgRx больше не используется
 
-type MatchesSHortInfoResponseData = {
-  [id: number]: MatchShortInfo;
-};
 
-@Injectable({
-  providedIn: 'root',
-})
-export class UserDetailPageServise {
-  constructor(
-    private http: HttpClient,
-    private dataStorageService: DataStorageService
-  ) {}
+// import { HttpClient, HttpParams } from '@angular/common/http';
+// import { Injectable } from '@angular/core';
+// import { UserWinLose } from './user-win-loose-statistic.model';
+// import { UserAccountInfo } from './user-account-info.model';
+// import { Observable, map, tap } from 'rxjs';
+// import { MatchInfoWithItems, MatchShortInfo } from '../shared/models/match-short-info.model';
+// import { DataStorageService } from '../shared/services/data-storage.service';
+// import { UserPlayedWith } from '../shared/models/user-played-with.model';
+// import { HeroPlayedStatistic } from '../shared/models/hero-played-statistic.model';
 
-  getUserWinLoseStat(userId: number): Observable<UserWinLose> {
-    return this.http.get<UserWinLose>(
-      'https://api.opendota.com/api/players/' + userId + '/wl'
-    );
-  }
+// type MatchesSHortInfoResponseData = {
+//   [id: number]: MatchShortInfo;
+// };
 
-  fetchtUserAccountInfo(userId: number): Observable<UserAccountInfo> {
-    return this.http.get<UserAccountInfo>(
-      'https://api.opendota.com/api/players/' + userId
-    );
-  }
+// @Injectable({
+//   providedIn: 'root',
+// })
+// export class UserDetailPageServise {
+//   constructor(
+//     private http: HttpClient,
+//     private dataStorageService: DataStorageService
+//   ) {}
 
-  fetchUsersLastMatches(userId: number): Observable<MatchShortInfo[]> {
-    return this.http
-      .get<MatchesSHortInfoResponseData>(
-        'https://api.opendota.com/api/players/' + userId + '/recentMatches?'
-      )
-      .pipe(
-        map((matches) => {
-          const matchesArray: MatchShortInfo[] = [];
-          for (const key in matches) {
-            if (matches.hasOwnProperty(key)) {
-              matchesArray.push({ ...matches[key] });
-            }
-          }
+//   // getUserWinLoseStat(userId: number): Observable<UserWinLose> {
+//   //   return this.http.get<UserWinLose>(
+//   //     'https://api.opendota.com/api/players/' + userId + '/wl'
+//   //   );
+//   // }
 
-          if (!this.dataStorageService.heroes) {
-            this.dataStorageService.fetchHeroes().subscribe();
-          }
-          matchesArray.forEach((el) => {
-            const notProcessedDuration: string = (el.duration / 60).toFixed(2);
+//   // fetchtUserAccountInfo(userId: number): Observable<UserAccountInfo> {
+//   //   return this.http.get<UserAccountInfo>(
+//   //     'https://api.opendota.com/api/players/' + userId
+//   //   );
+//   // }
 
-            el.duration_minutes = Number(notProcessedDuration.split('.')[0]);
+//   fetchUsersLastMatches(userId: number): Observable<MatchShortInfo[]> {
+//     return this.http
+//       .get<MatchesSHortInfoResponseData>(
+//         'https://api.opendota.com/api/players/' + userId + '/recentMatches?'
+//       )
+//       .pipe(
+//         map((matches) => {
+//           const matchesArray: MatchShortInfo[] = [];
+//           for (const key in matches) {
+//             if (matches.hasOwnProperty(key)) {
+//               matchesArray.push({ ...matches[key] });
+//             }
+//           }
 
-            el.duration_seconds = Number(
-              Number(
-                60 * (Number(notProcessedDuration.split('.')[1]) / 100)
-              ).toFixed(0)
-            );
-            el.rankName = Number((el.average_rank / 10).toFixed(0));
-          });
+//           if (!this.dataStorageService.heroes) {
+//             this.dataStorageService.fetchHeroes().subscribe();
+//           }
+//           matchesArray.forEach((el) => {
+//             const notProcessedDuration: string = (el.duration / 60).toFixed(2);
 
-          return matchesArray;
-        })
-      );
-  }
+//             el.duration_minutes = Number(notProcessedDuration.split('.')[0]);
 
-  fetchUsersPlayedWith(userId: number): Observable<UserPlayedWith[]> {
-    return this.http
-      .get<UserPlayedWith[]>(
-        'https://api.opendota.com/api/players/' + userId + '/peers'
-      )
-      .pipe(
-        map((usersData) => {
-          usersData.forEach((el) => {
-            el.with_win_percent = Number(
-              (el.with_win / (el.with_games / 100)).toFixed(1)
-            );
-          });
-          return usersData;
-        })
-      );
-  }
+//             el.duration_seconds = Number(
+//               Number(
+//                 60 * (Number(notProcessedDuration.split('.')[1]) / 100)
+//               ).toFixed(0)
+//             );
+//             el.rankName = Number((el.average_rank / 10).toFixed(0));
+//           });
 
-  fetchLastPlayedHeroes(userId: number): Observable<HeroPlayedStatistic[]> {
-    return this.http
-      .get<HeroPlayedStatistic[]>(
-        'https://api.opendota.com/api/players/' + userId + '/heroes?'
-      )
-      .pipe(
-        map((heroes) => {
-          heroes.forEach((el) => {
-            el.with_win_percent = Number(
-              (el.win / (el.games / 100)).toFixed(1)
-            );
-          });
-          return heroes;
-        })
-      );
-  }
+//           return matchesArray;
+//         })
+//       );
+//   }
 
-  fetchAllUsersMatches(userId: number) {
-    let matchesParams = new HttpParams();
-    matchesParams = matchesParams.append('project', 'item_0');
-    matchesParams = matchesParams.append('project', 'item_1');
-    matchesParams = matchesParams.append('project', 'item_2');
-    matchesParams = matchesParams.append('project', 'item_3');
-    matchesParams = matchesParams.append('project', 'item_4');
-    matchesParams = matchesParams.append('project', 'item_5');
-    matchesParams = matchesParams.append('project', 'average_rank');
-    matchesParams = matchesParams.append('project', 'party_size');
-    matchesParams = matchesParams.append('project', 'duration');
-    matchesParams = matchesParams.append('project', 'game_mode');
-    matchesParams = matchesParams.append('project', 'lobby_type');
-    matchesParams = matchesParams.append('project', 'start_time');
-    matchesParams = matchesParams.append('project', 'hero_id');
-    matchesParams = matchesParams.append('project', 'version');
-    matchesParams = matchesParams.append('project', 'kills');
-    matchesParams = matchesParams.append('project', 'deaths');
-    matchesParams = matchesParams.append('project', 'assists');
-    matchesParams = matchesParams.append('project', 'skill');
+//   fetchUsersPlayedWith(userId: number): Observable<UserPlayedWith[]> {
+//     return this.http
+//       .get<UserPlayedWith[]>(
+//         'https://api.opendota.com/api/players/' + userId + '/peers'
+//       )
+//       .pipe(
+//         map((usersData) => {
+//           usersData.forEach((el) => {
+//             el.with_win_percent = Number(
+//               (el.with_win / (el.with_games / 100)).toFixed(1)
+//             );
+//           });
+//           return usersData;
+//         })
+//       );
+//   }
 
-    return this.http.get<MatchInfoWithItems[]>(
-      'https://api.opendota.com/api/players/' + userId + '/matches',
-      { params: matchesParams }
-    );
-  }
-}
+//   fetchLastPlayedHeroes(userId: number): Observable<HeroPlayedStatistic[]> {
+//     return this.http
+//       .get<HeroPlayedStatistic[]>(
+//         'https://api.opendota.com/api/players/' + userId + '/heroes?'
+//       )
+//       .pipe(
+//         map((heroes) => {
+//           heroes.forEach((el) => {
+//             el.with_win_percent = Number(
+//               (el.win / (el.games / 100)).toFixed(1)
+//             );
+//           });
+//           return heroes;
+//         })
+//       );
+//   }
+
+//   fetchAllUsersMatches(userId: number) {
+//     let matchesParams = new HttpParams();
+//     matchesParams = matchesParams.append('project', 'item_0');
+//     matchesParams = matchesParams.append('project', 'item_1');
+//     matchesParams = matchesParams.append('project', 'item_2');
+//     matchesParams = matchesParams.append('project', 'item_3');
+//     matchesParams = matchesParams.append('project', 'item_4');
+//     matchesParams = matchesParams.append('project', 'item_5');
+//     matchesParams = matchesParams.append('project', 'average_rank');
+//     matchesParams = matchesParams.append('project', 'party_size');
+//     matchesParams = matchesParams.append('project', 'duration');
+//     matchesParams = matchesParams.append('project', 'game_mode');
+//     matchesParams = matchesParams.append('project', 'lobby_type');
+//     matchesParams = matchesParams.append('project', 'start_time');
+//     matchesParams = matchesParams.append('project', 'hero_id');
+//     matchesParams = matchesParams.append('project', 'version');
+//     matchesParams = matchesParams.append('project', 'kills');
+//     matchesParams = matchesParams.append('project', 'deaths');
+//     matchesParams = matchesParams.append('project', 'assists');
+//     matchesParams = matchesParams.append('project', 'skill');
+
+//     return this.http.get<MatchInfoWithItems[]>(
+//       'https://api.opendota.com/api/players/' + userId + '/matches',
+//       { params: matchesParams }
+//     );
+//   }
+// }

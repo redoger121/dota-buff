@@ -8,6 +8,12 @@ import { MatchDetailComponent } from './match-detail/match-detail.component';
 import { MatchOverViewComponent } from './match-detail/match-overview/match-overview.component';
 import { ProcessingGameComponent } from './processing-game/processing-game.component';
 import { UsersAllMatchesComponent } from './user-detail-page/uses-all-matches/users-all-matches.component';
+import { UserMatchesOverviewResolver } from './user-detail-page/user-matches-overwiev/user-matches-verview-resolve.service';
+import {
+  AllMatchesResolver,
+  ItemIdsResolver,
+  ItemsFulInfoResolver,
+} from './user-detail-page/uses-all-matches/users-all-matches-resolve.service';
 
 const routes: Routes = [
   {
@@ -38,9 +44,18 @@ const routes: Routes = [
   {
     path: 'user-datail/:id',
     component: UserDetailPageComponent,
+    // resolve[],
     children: [
-      { path: 'overview', component: UserMatchesOverwievComponent },
-      { path: 'all-matches', component: UsersAllMatchesComponent },
+      {
+        path: 'overview',
+        component: UserMatchesOverwievComponent,
+        resolve: [UserMatchesOverviewResolver],
+      },
+      {
+        path: 'all-matches',
+        component: UsersAllMatchesComponent,
+        resolve: [AllMatchesResolver, ItemIdsResolver, ItemsFulInfoResolver],
+      },
     ],
   },
 ];

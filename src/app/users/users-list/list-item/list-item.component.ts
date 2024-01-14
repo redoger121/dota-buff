@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../../user-model';
 import { Router } from '@angular/router';
-import { ProPlayer } from '../../pro-players.mode';
+
 
 @Component({
   selector: 'app-list-item',
@@ -10,7 +10,7 @@ import { ProPlayer } from '../../pro-players.mode';
 })
 export class ListItemComponent {
   @Input('user') element!: User;
-  // @Input('proPlayers') proPlayers!:ProPlayer[];
+
   constructor(private route: Router) {}
 
   goToUserDetailPage(userId: number) {
