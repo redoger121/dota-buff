@@ -1,99 +1,19 @@
 :host {
-    /* z-index: 10;
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 8px;
-    background-color:  rgb(21, 27, 29);
-    position: absolute; */
-    /* top: -50px; */
-    /* width: 350px;
-    right: 100%;
-    padding: 10px 10px 10px 10px;
-    overflow: visible; */
-    z-index: 10;
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 8px;
-    background-color: #757575;
-    position: absolute;
-    /* top: 0; */
-    width: 300px;
-    right: 100%;
-    padding: 10px;
-    border: 2px solid rgb(39, 41, 43);
-    background: rgb(21, 27, 29);
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
 }
-
-.ability-desc {
-    text-align: left;
-    width: 100%;
-
+.tool-tip__wrapper {
+  padding-top: 8px;
+  background-color: #757575;
+  border: 2px solid rgb(39, 41, 43);
+  background: rgb(21, 27, 29);
+  padding: 10px;
 }
-
-.ability-image {
-    width: 50px;
-    height: 50px;
-    object-fit: fill;
-    margin-right: 10px;
-
-}
-
-.top-block {
-    display: flex;
-    align-items: center;
-}
-
-.ability-name {
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.top-block {
-    border-bottom: 1px solid white;
-    padding-bottom: 10px;
-    width: 100%;
-}
-
-.mana-cost {
-    display: flex;
-    margin-right: 20px;
-}
-
-.col-down {
-    display: flex;
-}
-
-.mc-cd__wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    padding-top: 10px;
-
-}
-
-.ability-type-info {
-    border-bottom: 1px solid white;
-    padding: 10px;
-    width: 100%;
-}
-
 .ability-lore {
-    padding: 10px;
-    border-bottom: 1px solid white;
-    width: 100%;
-    background-color: rgb(81, 86, 95);
-}
-
-.ability-parametr{
- word-wrap: nowrap;
-}
-
-.mc-cd-img{
-    margin-right: 5px;
-    height: 24px;
-    width: 24px;
-}
-
-.attribut-wrapper{
-    padding-top: 10px;
+  padding: 10px;
+  border-bottom: 1px solid white;
+  width: 100%;
+  background-color: rgb(81, 86, 95);
 }

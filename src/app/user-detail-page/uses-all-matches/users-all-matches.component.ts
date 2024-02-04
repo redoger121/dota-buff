@@ -21,7 +21,7 @@ import * as UserDetailPageActions from '../store/user-detail-page.actions';
 
 
 export class UsersAllMatchesComponent implements OnInit, OnDestroy {
-  usersId!: number;
+  // usersId!: number;
   allMatches!: MatchInfoWithItems[];
   page: number = 1;
   count: number = 0;
@@ -49,7 +49,7 @@ export class UsersAllMatchesComponent implements OnInit, OnDestroy {
         this.itemIds = selectedData.itemIds;
         this.itemFullInfo = selectedData.itemFullInfo;
       });
-    this.store.dispatch(UserDetailPageActions.FetchAllUserMatches());
+    // this.store.dispatch(UserDetailPageActions.FetchAllUserMatches());
 
     this.AllMatchesDataSubscription = this.store
       .select('usersDetailPage')

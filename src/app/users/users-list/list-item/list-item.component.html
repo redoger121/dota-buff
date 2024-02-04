@@ -1,14 +1,18 @@
 
 
 
-<div class="user-wrapper" >
-  <div class="user">
-    <img [src]="element.avatarfull" class="user-img" alt="...">
-    <div class="user-description">
-      <a class="username" (click)="goToUserDetailPage(element.account_id)">{{element.personaname}}</a>
-      <p class="last-match">Последний матч {{element.last_match_time| date:'short'}}</p>
+<div class=" w-full   block user-wrapper p-2 rounded ">
+  <div class="user flex ">
+    <img [src]="element.avatarfull" class="user-img w-24 h-24 rounded-full border-1  align-middle" alt="...">
+    <div class=" text-left p-2">
+      <a class="cursor-pointer transition ease-in-out delay-150 text-2xl hover:!text-sky-600" (click)="goToUserDetailPage(element.account_id)">{{element.personaname}}</a>
+
+      <p *ngIf="element.last_match_time" class="last-match text-lg">Последний матч {{element.last_match_time| date:'short'}}</p>
+      <p *ngIf="!element.last_match_time" class="last-match text-lg ">Дата последнего матча неизвестна</p>
+
 
     </div>
+
   </div>
 
 </div>

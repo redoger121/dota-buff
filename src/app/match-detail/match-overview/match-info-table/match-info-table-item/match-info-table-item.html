@@ -1,0 +1,246 @@
+<td>
+    <div class="flex items-center">
+        <div class="">
+
+            <img class="w-[52px] h-8 mr-1 min-w-12" [src]="'https://cdn.cloudflare.steamstatic.com'+heroes[player.hero_id].img"
+            alt="hero-img"  [tooltip]="heroes[player.hero_id].localized_name"  [heroDesc]="heroes[player.hero_id]">
+        </div>
+        <div class="text-left" [routerLink]="['/user-datail', player.account_id, 'overview']">
+            <a class="text-base !text-sky-600 transition-all hover:!text-sky-800 "
+                *ngIf="player.personaname">{{player.personaname}}</a>
+            <p class="text-base !text-sky-600 transition-all hover:!text-sky-800 " *ngIf="!player.personaname">Аноним
+            </p>
+            <p class="text-base text-gray-300" *ngIf="player.rankName">
+                {{ranksLocalized[player.rankName-1]}}
+                [{{player.rank_tier%10}}]</p>
+            <p class="text-base text-gray-300" *ngIf="!player.rankName">Неизвестно</p>
+        </div>
+    </div>
+</td>
+
+<td class="text-center">
+    <p class="text-base text-gray-300">{{player.level}}</p>
+</td>
+<td class="text-center">
+    <p class="text-base text-green-600">
+        {{player.kills}}
+    </p>
+</td>
+<td class="text-center">
+    <p class="text-base text-red-600">{{player.deaths}}</p>
+</td>
+<td class="text-center">
+    <p class="text-base text-gray-300">{{player.assists}}</p>
+</td>
+<td class="text-center">
+    <p class="text-base text-gray-300">{{player.last_hits}}/{{player.denies}}</p>
+</td>
+<td class="text-center">
+    <p class="text-base net_worth">{{player.net_worth}}</p>
+</td>
+
+<td class="text-center">
+    <p class="text-base text-gray-300">{{player.benchmarks.gold_per_min.raw}}/{{player.benchmarks.xp_per_min.raw}}</p>
+</td>
+<td class="text-center">
+     <p class="text-base text-gray-300">{{player.hero_damage}}</p>
+</td>
+<td class="text-center">
+    <p class="text-base text-gray-300">{{player.tower_damage}}</p>
+</td>
+<td class="text-center">
+    <p class="text-base text-gray-300">{{player.hero_healing}}</p>
+</td>
+<td>
+    <div class="flex">
+        <div class="flex">
+
+
+            <div *ngIf="player.item_0" class="item-container">
+
+                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_0]]">
+                    <img class="w-[39px] h-[29px] min-w-9" [tooltip]="itemIds[player.item_0] " [allItemsDesc]="itemFullInfo"
+                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_0]].img" />
+                </ng-template>
+
+                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_0]]">
+
+                    <img class="w-[39px] h-[29px] min-w-9" src="https://www.opendota.com/assets/images/default_attack.png" />
+                </ng-template>
+            </div>
+
+
+            <div *ngIf="player.item_1" class="item-container">
+                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_1]]">
+                    <img class="w-[39px] h-[29px] min-w-9" [tooltip]="itemIds[player.item_1] " [allItemsDesc]="itemFullInfo"
+                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_1]].img" />
+
+                </ng-template>
+                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_1]]">
+
+                    <img class="w-[39px] h-[29px] min-w-9" src="https://www.opendota.com/assets/images/default_attack.png" />
+                </ng-template>
+            </div>
+
+
+            <div *ngIf="player.item_2" class="item-container">
+                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_2]]">
+                    <img class="w-[39px] h-[29px] min-w-9" [tooltip]="itemIds[player.item_2] " [allItemsDesc]="itemFullInfo"
+                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_2]].img" />
+                </ng-template>
+                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_2]]">
+
+                    <img class="w-[39px] h-[29px] min-w-9" src="https://www.opendota.com/assets/images/default_attack.png" />
+                </ng-template>
+            </div>
+
+
+            <div *ngIf="player.item_3" class="item-container">
+                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_3]]">
+                    <img class="w-[39px] h-[29px] min-w-9" [tooltip]="itemIds[player.item_3] " [allItemsDesc]="itemFullInfo"
+                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_3]].img" />
+                </ng-template>
+                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_3]]">
+
+                    <img class="w-[39px] h-[29px] min-w-9" src="https://www.opendota.com/assets/images/default_attack.png" />
+                </ng-template>
+            </div>
+
+
+            <div *ngIf="player.item_4" class="item-container">
+                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_4]]">
+                    <img class="w-[39px] h-[29px] min-w-9" [tooltip]="itemIds[player.item_4] " [allItemsDesc]="itemFullInfo"
+                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_4]].img" />
+
+                </ng-template>
+                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_4]]">
+
+                    <img class="w-[39px] h-[29px] min-w-9" src="https://www.opendota.com/assets/images/default_attack.png" />
+                </ng-template>
+            </div>
+
+
+
+            <div *ngIf="player.item_5" class="item-container">
+                <ng-template [ngIf]="itemFullInfo[itemIds[player.item_5]]">
+
+                    <img class="w-[39px] h-[29px] min-w-9" [tooltip]="itemIds[player.item_5] " [allItemsDesc]="itemFullInfo"
+                        [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_5]].img" />
+                </ng-template>
+                <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_5]]">
+
+                    <img class="w-[39px] h-[29px] min-w-9" src="https://www.opendota.com/assets/images/default_attack.png" />
+                </ng-template>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="flex items-center mt-1" *ngIf="player.backpack_0 || player.backpack_1 || player.backpack_2">
+
+        <img src="../../../../../assets/imgs/match-detail/backpack.svg" alt="backpack.svg" class="w-[21px] h-[18px] min-w-4">
+
+
+        <div *ngIf="player.backpack_0!==0" class="item-container">
+            <ng-template [ngIf]="itemFullInfo[itemIds[player.backpack_0]]">
+
+                <img [tooltip]="itemIds[player.backpack_0] " [allItemsDesc]="itemFullInfo" class="w-[25px] h-[18px] min-w-5"
+                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.backpack_0]].img" />
+            </ng-template>
+            <ng-template [ngIf]="!itemFullInfo[itemIds[player.backpack_0]]">
+
+                <img src="https://www.opendota.com/assets/images/default_attack.png" class="w-[25px] h-[18px] min-w-5" />
+            </ng-template>
+
+        </div>
+
+        <div *ngIf="player.backpack_1!==0" class="item-container">
+            <ng-template [ngIf]="itemFullInfo[itemIds[player.backpack_1]]">
+                <img [tooltip]="itemIds[player.backpack_1] " [allItemsDesc]="itemFullInfo" class="w-[25px] h-[18px] min-w-5"
+                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.backpack_1]].img" />
+            </ng-template>
+            <ng-template [ngIf]="!itemFullInfo[itemIds[player.backpack_1]]">
+
+                <img src="https://www.opendota.com/assets/images/default_attack.png" class="w-[25px] h-[18px] min-w-5" />
+            </ng-template>
+        </div>
+
+        <div *ngIf="player.backpack_2!==0" class="item-container">
+            <ng-template [ngIf]="itemFullInfo[itemIds[player.backpack_2]]">
+                <img [tooltip]="itemIds[player.backpack_2] " [allItemsDesc]="itemFullInfo" class="w-[25px] h-[18px] min-w-5"
+                    [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.backpack_2]].img" />
+            </ng-template>
+            <ng-template [ngIf]="!itemFullInfo[itemIds[player.backpack_2]]">
+
+                <img src="https://www.opendota.com/assets/images/default_attack.png" class="w-[25px] h-[18px] min-w-5" />
+            </ng-template>
+        </div>
+
+    </div>
+
+</td>
+<td>
+
+    <div *ngIf="player.item_neutral" class="item-container">
+        <ng-template [ngIf]="itemFullInfo[itemIds[player.item_neutral]]">
+
+            <img class="neutral-item" [tooltip]="itemIds[player.item_neutral] " [allItemsDesc]="itemFullInfo"
+                class="object-cover rounded-full h-8 w-8 min-w-7"
+                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[player.item_neutral]].img" />
+        </ng-template>
+        <ng-template [ngIf]="!itemFullInfo[itemIds[player.item_neutral]]">
+            <img class="object-cover rounded-full h-8 w-8 min-w-7"
+                src="https://www.opendota.com/assets/images/default_attack.png" />
+        </ng-template>
+    </div>
+
+</td>
+
+<td>
+    <div class="aganim-wrapper">
+
+        <ng-template [ngIf]="player.aganimEaten">
+
+            <img class="w-[24px] h-[24px] min-w-5" src="https://www.opendota.com/assets/images/dota2/scepter_1.png"
+                [tooltip]="itemIds[108] " [allItemsDesc]="itemFullInfo" alt="aganim-img">
+
+        </ng-template>
+
+        <ng-template [ngIf]="!player.aganimEaten">
+            <img class="w-[24px] h-[24px] min-w-5" src="https://www.opendota.com/assets/images/dota2/scepter_0.png"
+                [tooltip]="itemIds[108] " [allItemsDesc]="itemFullInfo" alt="aganim-img">
+        </ng-template>
+
+        <ng-template [ngIf]="player.aganimShardEaten">
+            <img class="w-[24px] h-[13px] min-w-5" src="https://www.opendota.com/assets/images/dota2/shard_1.png" [tooltip]="itemIds[609] "
+                [allItemsDesc]="itemFullInfo" alt="aganim-img">
+
+        </ng-template>
+        <ng-template [ngIf]="!player.aganimShardEaten">
+            <img class="w-[24px] h-[13px] min-w-5" src="https://www.opendota.com/assets/images/dota2/shard_0.png" [tooltip]="itemIds[609] "
+                [allItemsDesc]="itemFullInfo" alt="shard-img">
+        </ng-template>
+    </div>
+</td>
+
+<td *ngIf="player.permanent_buffs">
+    <div class="flex justify-center" *ngFor="let buff of player.permanent_buffs">
+        <ng-template
+            [ngIf]="buff.type==='item' && buff.name && buff.name!='ultimate_scepter' && buff.name!='aghanims_shard'">
+            <div class="relative" [tooltip]="buff.name " [allItemsDesc]="itemFullInfo">
+                <img class="h-[29px] w-[29px] min-w-6" [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[buff.name].img"
+                    alt="buff-img">
+                <span class="absolute right-0 top-2" *ngIf="buff.stack_count>0">{{buff.stack_count}}</span>
+            </div>
+        </ng-template>
+        <ng-template [ngIf]="buff.type==='ability' && buff.name">
+            <div class="relative" [tooltip]="buff.name" [allAbilitiesDesc]="abilitiesFullInfo">
+                <img class="h-[29px] w-[29px] min-w-6" [src]="'https://cdn.cloudflare.steamstatic.com'+abilitiesFullInfo[buff.name].img"
+                    alt="buff-img">
+                <div class="absolute right-0 top-2">{{buff.stack_count}}</div>
+            </div>
+        </ng-template>
+    </div>
+
+</td>

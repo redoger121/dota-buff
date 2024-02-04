@@ -1,29 +1,30 @@
-<div class="ability-desc">
+<div class=" tool-tip__wrapper text-left w-[300px]">
 
-    <div class="top-block">
+    <div class="flex items-center">
         <ng-template [ngIf]="abilityInfo.img">
-            <img class="ability-image" [src]="'https://cdn.cloudflare.steamstatic.com'+abilityInfo.img"
-                alt="ability image">
+            <img class="mr-[10px] w-[50px] h-[50px] object-fill"
+                [src]="'https://cdn.cloudflare.steamstatic.com'+abilityInfo.img" alt="ability image">
         </ng-template>
         <ng-template [ngIf]="!abilityInfo.img">
-            <img class="ability-image" src="https://www.opendota.com/assets/images/dota2/talent_tree.svg"
-                alt="ability image">
+            <img class="mr-[10px] w-[50px] h-[50px] object-fill"
+                src="https://www.opendota.com/assets/images/dota2/talent_tree.svg" alt="ability image">
         </ng-template>
         <ng-template [ngIf]="abilityInfo.dname">
-            <p class="ability-name">{{abilityInfo.dname}}</p>
+            <p class="font-bold text-2xl text-wrap">{{abilityInfo.dname}}</p>
         </ng-template>
         <ng-template [ngIf]="!abilityInfo.dname">
-            <p class="ability-name">Bonuse Attribtues</p>
+            <p class="font-bold text-2xl">Bonuse Attribtues</p>
         </ng-template>
     </div>
 
 
-    <div class="ability-type-info" *ngIf="abilityInfo.behavior || abilityInfo.dmg_type || abilityInfo.bkbpierce ">
+    <div class="border-b p-[10px] w-full"
+        *ngIf="abilityInfo.behavior || abilityInfo.dmg_type || abilityInfo.bkbpierce ">
 
 
         <ng-template [ngIf]="abilityInfo.behavior">
 
-            <p class="ability-parametr">TARGET:
+            <p class="text-nowrap">TARGET:
                 <ng-template [ngIf]="abilityInfo.behavior.constructor.name==='Array'">
                     <ng-template ngFor let-item [ngForOf]="abilityInfo.behavior" let-index="index">
                         <ng-template [ngIf]="index<abilityInfo.behavior.length-1">
@@ -46,26 +47,25 @@
 
 
         <ng-template [ngIf]="abilityInfo.dmg_type">
-            <p class="ability-parametr">DAMAGE TYPE: {{abilityInfo.dmg_type}}</p>
+            <p class="text-nowrap">DAMAGE TYPE: {{abilityInfo.dmg_type}}</p>
         </ng-template>
         <ng-template [ngIf]="abilityInfo.bkbpierce">
-            <p class="ability-parametr">PIERCE SPELL IMMUNITY: {{abilityInfo.bkbpierce}}</p>
+            <p class="text-nowrap">PIERCE SPELL IMMUNITY: {{abilityInfo.bkbpierce}}</p>
         </ng-template>
 
     </div>
 
     <div class="ability-lore" *ngIf="abilityInfo.lore">
         <ng-template [ngIf]="abilityInfo.lore">
-            <p class="lore-text">{{abilityInfo.lore}}</p>
+            <p class="text-left text-wrap">{{abilityInfo.lore}}</p>
         </ng-template>
 
     </div>
 
-
-    <div class="attribut-wrapper" *ngIf="abilityInfo.attrib ">
+    <div class="pt-[10px] w-full" *ngIf="abilityInfo.attrib ">
         <div class="" *ngFor="let item of abilityInfo.attrib ">
-            <p>{{item.header}}
-                <ng-template [ngIf]="item.value.constructor.name === 'Array'">
+            <p class="text-wrap">{{item.header}}
+                <span *ngIf="item.value.constructor.name === 'Array'">
 
                     <ng-template ngFor let-value [ngForOf]="item.value" let-index="index">
                         <ng-template [ngIf]="index<item.value.length-1">
@@ -78,24 +78,23 @@
 
 
                     </ng-template>
-                </ng-template>
+                </span>
 
-                <ng-template [ngIf]="item.value.constructor.name === 'String'">
+                <span *ngIf="item.value.constructor.name === 'String'">
                     {{item.value}}
-                </ng-template>
+                </span>
             </p>
 
         </div>
     </div>
 
+    <div class="flex flex-nowrap pt-[10px]">
 
-    <div class="mc-cd__wrapper">
+        <div class="flex mr-5" *ngIf="abilityInfo.mc">
 
-        <div class="mana-cost" *ngIf="abilityInfo.mc">
-
-            <img class="mc-cd-img" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/mana.png"
+            <img class="mr-1 h-6 w-6" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/mana.png"
                 alt="mana-img">
-            <p>
+            <p class="text-wrap">
                 <ng-template [ngIf]="abilityInfo.mc.constructor.name==='Array'">
                     <ng-template ngFor let-item [ngForOf]="abilityInfo.mc" let-index="index">
                         <ng-template [ngIf]="index<abilityInfo.mc.length-1">
@@ -117,10 +116,10 @@
 
         </div>
 
-        <div class="col-down" *ngIf="abilityInfo.cd">
-            <img class="mc-cd-img" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/cooldown.png"
-                alt="col-down img">
-            <p>
+        <div class="flex" *ngIf="abilityInfo.cd">
+            <img class="mr-1 h-6 w-6"
+                src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/tooltips/cooldown.png" alt="col-down img">
+            <p class="text-wrap">
                 <ng-template [ngIf]="abilityInfo.cd.constructor.name==='Array'">
                     <ng-template ngFor let-item [ngForOf]="abilityInfo.cd" let-index="index">
                         <ng-template [ngIf]="index<abilityInfo.cd.length-1">
@@ -138,9 +137,7 @@
                 </ng-template>
 
             </p>
-            <div>
 
-            </div>
         </div>
     </div>
 </div>

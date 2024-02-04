@@ -1,24 +1,96 @@
-<nav class="navbar navbar-expand-lg bg-primary ">
-    <div class="container-fluid">
-      <a class="navbar-brand"   [routerLink]="['']">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" (click)="onMenuButtonClick()" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" appToggleNav   [showNav]="showNav"  id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" ></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" >Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-      </div>
+<!-- <nav class="navbar navbar-expand-lg bg-primary ">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['']">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse"  id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav> -->
+
+
+<nav class="w-full mx-auto flex justify-between  p-3 items-center sticky top-0 z-10  ">
+  <div class="flex justify-between w-full ">
+    <div class=" desktop-menu flex items-center  ">
+
+      <div class="pr-1 lg:pr-20">
+        <a class="text-2xl " [routerLink]="['']">Главная</a>
+      </div>
+
+      <ul class="mx-auto my-auto">
+        <li class=" mx-8 hidden md:inline">
+          <a class="">Матчи</a>
+        </li>
+        <li class="mx-8 hidden md:inline">
+          <a>Герои</a>
+        </li>
+        <li class="mx-8 hidden md:inline">
+          <a>Команды</a>
+        </li>
+      </ul>
+
+    </div>
+
+
+    <div class="flex justify-end items-center">
+
+      <form [formGroup]="findUserForm" (ngSubmit)="onSubmit()" class="mr-3 " method="post" autocomplete="off">
+
+        <input class=" " readonly="readonly" onfocus="this.removeAttribute('readonly');" placeholder="поиск игрков"
+          type="text" id="search" utocomplete="off" formControlName="userName" />
+
+
+
+      </form>
+      <a class="hidden md:inline">Войти</a>
+
+    </div>
+  </div>
+
+
+
+
+  <div class="" appToggleNav [showNav]="showNav">
+
+    <img class="w-10 h-10 block md:hidden  " #hamburger src="../../assets/imgs//header-imgs/burger-menu.svg"
+      (click)="onMenuButtonClick()" alt="">
+    <div class="mobile-menu w-0  absolute overflow-hidden ">
+      <ul class="mx-auto text-center">
+        <li class=" mx-8  md:hidden">
+          <a>Матчи</a>
+        </li>
+        <li class="mx-8  md:hidden">
+          <a>Герои</a>
+        </li>
+        <li class="mx-8  md:hidden">
+          <a>Команды</a>
+        </li>
+        <li class="mx-8  md:hidden">
+          <a>Войти</a>
+        </li>
+      </ul>
+
+    </div>
+
+
+  </div>
+
+
+
+</nav>

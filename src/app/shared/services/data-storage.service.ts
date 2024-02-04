@@ -11,9 +11,7 @@ export type HeroResponseData = {
   [id: number]: Hero;
 };
 
-type LobbyResponseData = {
-  [id: number]: Lobby;
-};
+type LobbyResponseData = {[id: number]: Lobby;};
 
 @Injectable({
   providedIn: 'root',

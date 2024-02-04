@@ -16,3 +16,12 @@ input{
 .container{
     margin-top: 20px;
 }
+
+.main-page-wrapper{
+    height: 100vh;
+    background-image: url('../../assets/imgs/main-page/home-background.png');
+    background-repeat: no-repeat;
+ 
+    background-position: center top;
+    background-size: contain;
+}

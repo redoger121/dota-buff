@@ -1,0 +1,111 @@
+<div class="block bg-[#131519] w-72 p-2 relative overflow-hidden">
+    <div class="absolute -left-14 opacity-30 blur-[10px] scale-150 " *ngIf="heroe.primary_attr==='int'">
+        <img src="../../../../assets/imgs/hero-tool-top/morphling.png" alt="">
+    </div>
+    <div class="absolute -left-14 opacity-30 blur-[10px] scale-150 " *ngIf="heroe.primary_attr==='agi'">
+        <img src="../../../../assets/imgs/hero-tool-top/viper.png" alt="">
+    </div>
+    <div class="absolute -left-14 opacity-30 blur-[10px] scale-150 " *ngIf="heroe.primary_attr==='str'">
+        <img src="../../../../assets/imgs/hero-tool-top/axe.png" alt="">
+    </div>
+    <div class="absolute -left-14 opacity-30 blur-[10px] scale-150 " *ngIf="heroe.primary_attr==='all'">
+        <img src="../../../../assets/imgs/hero-tool-top/wisp.png" alt="">
+    </div>
+    <div class="flex  border-b-2 border-gray-600 mb-2" >
+        <div class="relative pt-2">
+            <img [src]="'https://cdn.cloudflare.steamstatic.com'+heroe.img" class="w-[100px]" alt="hero-img">
+            <p class="text-center w-fit  text-gray-400">
+                <span class="text-sm uppercase !text-green-600">HP{{heroe.base_health+heroe.base_str*22}}
+                </span>/
+                <span class="uppercase text-sm !text-sky-600">MP{{heroe.base_mana+heroe.base_int*12}}</span>
+            </p>
+        </div>
+        <div class="px-2 w-full ">
+            <p class="text-sm  text-gray-200 font-bold p-0 leading-3">{{heroe.localized_name}}</p>
+            <p class="text-xs  text-gray-400 p-0 text-wrap">{{heroe.attack_type}} - <span class=" !text-gray-400"
+                    *ngFor="let role of heroe.roles; last as isLast ">
+                    <ng-template [ngIf]="!isLast">
+                        {{role}},
+                    </ng-template>
+                    <ng-template [ngIf]="isLast">
+                        {{role}}
+                    </ng-template>
+                </span></p>
+
+            <div class="flex justify-between py-2 items-center">
+
+                <div class="">
+                    <div class="rounded-full border-2 border-white overflow-hidden w-fit mx-auto"
+                        *ngIf="heroe.primary_attr==='str'">
+                        <img src="../../../../assets/imgs/hero-tool-top/strength.svg" class="w-8 h-8   " alt="">
+
+                    </div>
+                    <div class="rounded-full border-2 border-gray-600 overflow-hidden  w-fit mx-auto"
+                        *ngIf="heroe.primary_attr!=='str'">
+                        <img src="../../../../assets/imgs/hero-tool-top/strength.svg" class="w-8 h-8   " alt="">
+
+                    </div>
+                    <span class="!text-xs text-center !text-gray-600">{{heroe.base_str}} + {{heroe.str_gain}}</span>
+                </div>
+
+                <div class="">
+                    <div class="rounded-full border-2 border-white overflow-hidden w-fit mx-auto "
+                        *ngIf="heroe.primary_attr==='agi'">
+                        <img src="../../../../assets/imgs/hero-tool-top/agility.svg" class="w-8 h-8   " alt="">
+                    </div>
+                    <div class="rounded-full border-2 border-gray-600 overflow-hidden w-fit mx-auto"
+                        *ngIf="heroe.primary_attr!=='agi'">
+                        <img src="../../../../assets/imgs/hero-tool-top/agility.svg" class="w-8 h-8   " alt="">
+                    </div>
+                    <span class="!text-xs text-center !text-gray-600">{{heroe.base_agi}} + {{heroe.agi_gain}}</span>
+                </div>
+
+                <div class="">
+                    <div class="rounded-full border-2 border-white overflow-hidden w-fit mx-auto"
+                        *ngIf="heroe.primary_attr==='int'">
+                        <img src="../../../../assets/imgs/hero-tool-top/int.svg" class="w-8 h-8   " alt="">
+                    </div>
+                    <div class="rounded-full border-2 border-gray-600 overflow-hidden w-fit mx-auto"
+                        *ngIf="heroe.primary_attr!=='int'">
+                        <img src="../../../../assets/imgs/hero-tool-top/int.svg" class="w-8 h-8   " alt="">
+                    </div>
+                    <span class="!text-xs text-center !text-gray-600">{{heroe.base_int}} + {{heroe.int_gain}}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="">
+        <div class="flex items-baseline">
+            <span class="text-sm  text-gray-200">Скорость передвижения:</span>
+            <span class="flex-1 border-dashed border-gray-600 border-b mx-2"></span>
+            <span>{{heroe.move_speed}}</span>
+        </div>
+        <div class="flex">
+            <span class="text-sm  text-gray-200">Базовая атака:</span>
+            <span class="flex-1 border-dashed border-gray-600 border-b mx-2"></span>
+
+            <span
+                *ngIf="heroe.primary_attr==='int'">{{heroe.base_attack_min+heroe.base_int}}-{{heroe.base_attack_max+heroe.base_int}}</span>
+            <span
+                *ngIf="heroe.primary_attr==='str'">{{heroe.base_attack_min+heroe.base_str}}-{{heroe.base_attack_max+heroe.base_str}}</span>
+            <span
+                *ngIf="heroe.primary_attr==='agi'">{{heroe.base_attack_min+heroe.base_agi}}-{{heroe.base_attack_max+heroe.base_agi}}</span>
+            <span
+                *ngIf="heroe.primary_attr==='all'">{{heroe.base_attack_min+(heroe.base_agi+heroe.base_int+heroe.base_str)*0.6}}-{{heroe.base_attack_max+(heroe.base_agi+heroe.base_int+heroe.base_str)*0.6}}</span>
+        </div>
+        <div class="flex">
+            <span class="text-sm  text-gray-200">Базовая броня:</span>
+            <span class="flex-1 border-dashed border-gray-600 border-b mx-2"></span>
+            <span>{{armor}}</span>
+        </div>
+        <div class="flex">
+            <span class="text-sm  text-gray-200">Дальность атаки:</span>
+            <span class="flex-1 border-dashed border-gray-600 border-b mx-2"></span>
+            <span>{{heroe.attack_range}}</span>
+        </div>
+
+    </div>
+
+</div>

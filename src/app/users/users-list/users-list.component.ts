@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, switchMap, tap } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { User } from '../user-model';
 import { ProPlayer } from '../pro-players.mode';
 import * as fromApp from '../../store/app.reducer';
@@ -16,7 +15,6 @@ import * as PlayersAction from '../store/users.actions';
 export class UsersListComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
-
     private rout: ActivatedRoute,
     private store: Store<fromApp.AppState>
   ) {}

@@ -1,0 +1,85 @@
+<div class="table_wrapper w-full mx-auto  xl:w-4/5 ">
+
+    <table class="table-auto mx-auto border mb-11 border-sky-600 w-full  ">
+        <caption class="text-[14px] text-white text-left">Силы света - Обзор
+            <span class="font-extrabold !text-green-600 uppercase" *ngIf="radiantWin">Победа</span>
+            <span class="font-extrabold !text-red-600 uppercase" *ngIf="!radiantWin">Поражение</span>
+        </caption>
+        <thead>
+
+            <tr>
+                <th class="text-left pl-4">Игрок</th>
+                <th class="text-center">УР.</th>
+                <th class="!text-green-600 text-center">У</th>
+                <th class="!text-red-600 text-center">С</th>
+                <th class="text-center">П</th>
+                <th class="text-center text-nowrap">ДК/НО</th>
+                <th class="net_worth !text-[rgb(201, 175, 29)] text-center">NET</th>
+                <th class="text-center">GPM/XPM</th>
+                <th class="text-center">Урон</th>
+                <th class="text-center">ПСТР</th>
+                <th class="text-center">ЛЕЧ</th>
+                <th class="text-left">ПРЕДМЕТЫ</th>
+                <th></th>
+                <th></th>
+                <ng-template [ngIf]="isPermanentBuffs">
+                    <th class="text-center pr-4"> ПОЛОЖ. <br> ЭФФЕКТЫ</th>
+                </ng-template>
+            </tr>
+        </thead>
+        <tbody class="px-3">
+            <ng-template ngFor let-player [ngForOf]="players">
+                <tr class="border-b border-sky-600" app-match-info-table-item *ngIf="player.isRadiant" [player]="player"
+                    [heroes]="heroes" [itemFullInfo]="itemFullInfo" [itemIds]="itemIds"
+                    [abilitiesFullInfo]="abilitiesFullInfo">
+
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+
+
+
+</div>
+
+<div class="table_wrapper w-full mx-auto  xl:w-4/5 mb-11">
+
+    <table class="table-auto mx-auto border border-sky-600 w-full">
+        <caption class="text-[14px] text-white text-left">Силы тьмы - Обзор
+            <span class="font-extrabold !text-green-600 uppercase" *ngIf="!radiantWin">Победа</span>
+            <span class="font-extrabold !text-red-600 uppercase" *ngIf="radiantWin">Поражение</span>
+        </caption>
+        <thead>
+
+            <tr>
+                <th class="text-left pl-4">Игрок</th>
+                <th class="text-center">УР.</th>
+                <th class="!text-green-600 text-center">У</th>
+                <th class="!text-red-600 text-center">С</th>
+                <th class="text-center">П</th>
+                <th class="text-center text-nowrap">ДК/НО</th>
+                <th class="net_worth !text-[rgb(201, 175, 29)] text-center">NET</th>
+                <th class="text-center">GPM/XPM</th>
+                <th class="text-center">Урон</th>
+                <th class="text-center">ПСТР</th>
+                <th class="text-center">ЛЕЧ</th>
+                <th class="text-left">ПРЕДМЕТЫ</th>
+                <th></th>
+                <th></th>
+                <ng-template [ngIf]="isPermanentBuffs">
+                    <th class="text-center pr-4"> ПОЛОЖ. <br> ЭФФЕКТЫ</th>
+                </ng-template>
+            </tr>
+        </thead>
+        <tbody class="px-3">
+            <ng-template ngFor let-player [ngForOf]="players">
+                <tr class="border-b border-sky-600" app-match-info-table-item *ngIf="!player.isRadiant"
+                    [player]="player" [heroes]="heroes" [itemFullInfo]="itemFullInfo" [itemIds]="itemIds"
+                    [abilitiesFullInfo]="abilitiesFullInfo">
+
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+
+</div>

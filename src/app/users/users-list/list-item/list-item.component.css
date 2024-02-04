@@ -1,19 +1,27 @@
-img{
+/* :host{
+    display: block;
+    width:  calc(50% - 8px);
+    padding: 4px;
+} */
+
+
+/* img{
     max-width: 42px;
     max-height: 42px;
     display: block;
-}
+} */
 .user-wrapper{
-    display: flex;
-    justify-content: space-between;
-    min-width: 300px;
+    /* display: flex;
+    justify-content: space-between; */
+   
     background-color: #2E3740;
+    
+ 
     
    
 }
 .user{
- 
-  display: flex;
+  /* display: flex; */
  
  
 }

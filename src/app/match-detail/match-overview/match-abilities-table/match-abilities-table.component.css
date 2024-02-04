@@ -1,0 +1,16 @@
+.table_wrapper{
+    height: auto;
+      display: block;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+    }
+    thead {
+
+        background: linear-gradient(90deg, rgba(20, 255, 212, 0.09) 2%, rgba(46, 160, 214, 0.26) 27%, rgba(5, 181, 249, 0.04) 80%);
+    
+    }
+
+    thead tr th{
+        padding: 10px 0;
+    }

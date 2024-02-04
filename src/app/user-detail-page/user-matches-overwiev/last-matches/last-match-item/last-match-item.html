@@ -1,0 +1,110 @@
+<td class="text-left">
+    <div class="flex ">
+        <div class="relative overflow-hidden w-3 border-l-2 max-h-12 border-sky-500" *ngIf="lastMatche.version">
+            <div class="absolute top-0 -left-3  ">
+                <svg viewBox="0 0 24 24"
+                    style="display: block; color: rgba(255, 255, 255, 0.87); fill: #0ea5e9; height: 24px; width: 24px; user-select: none; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;">
+                    <path
+                        d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z">
+                    </path>
+                </svg>
+            </div>
+        </div>
+
+        <div class="  " *ngIf="lastMatche.version">
+
+            <img [src]="
+            'https://cdn.cloudflare.steamstatic.com'+ lastMatche.hero_avatar" alt="hero_avatar" class="w-20 max-h-12"
+                [tooltip]="heroe.localized_name" [heroDesc]="heroe">
+
+        </div>
+        <div class="pl-3  " *ngIf="!lastMatche.version">
+
+            <img [src]="
+            'https://cdn.cloudflare.steamstatic.com'+ lastMatche.hero_avatar" alt="hero_avatar" class="w-20 max-h-12"
+                [tooltip]="heroe.localized_name" [heroDesc]="heroe">
+
+        </div>
+
+
+
+        <div class="pl-2">
+
+            <a (click)="goToMatchDetail(lastMatche.match_id)"
+                class="text-lg !text-sky-600  hover:!text-sky-800">{{lastMatche.hero_name}}</a>
+            <p class="text-sm text-gray-400">{{lastMatche.start_time*1000|date}}</p>
+        </div>
+    </div>
+
+</td>
+<td class="text-left">
+    <div class="" *ngIf="lastMatche.player_slot/100>1">
+        <div class="" *ngIf="lastMatche.radiant_win">
+            <p class="text-md font-medium text-red-700">Поражение</p>
+        </div>
+        <div class="" *ngIf="!lastMatche.radiant_win">
+            <p class="text-md text-green-700 font-medium">Победа</p>
+        </div>
+
+    </div>
+    <div class="" *ngIf="lastMatche.player_slot/100<1">
+        <div class="" *ngIf="!lastMatche.radiant_win">
+            <p class="text-md font-medium text-red-700">Поражение</p>
+        </div>
+        <div class="" *ngIf="lastMatche.radiant_win">
+            <p class="text-md text-green-700 font-medium">Победа</p>
+        </div>
+    </div>
+    <p class="text-sm text-gray-400">
+        {{lobbies[lastMatche.lobby_type]}}
+
+    </p>
+</td>
+
+<td class="">
+
+    <p class="text-sm text-gray-400">
+
+        {{gameType[lastMatche.game_mode]}}
+    </p>
+
+    <p class="text-sm text-gray-400" *ngIf="lastMatche.rankName">{{ranksLocalized[lastMatche.rankName-1]}}
+        [{{lastMatche.average_rank%10}}]</p>
+    <p class="text-sm !text-gray-400 " *ngIf="!lastMatche.rankName">Неизвестно</p>
+    <p class="text-sm text-gray-400" *ngIf="lastMatche.party_size">размер группы {{lastMatche.party_size}}</p>
+</td>
+<td class="text-left ">
+
+    <p class="text-sm !text-gray-400 "> {{lastMatche.duration_minutes}}:{{lastMatche.duration_seconds}}</p>
+
+    <div class="" *ngIf="lastMatche.player_slot/100>1">
+
+        <p class="text-sm !text-gray-400 ">Силы тьмы </p>
+    </div>
+    <div class="" *ngIf="lastMatche.player_slot/100<1">
+
+        <p class="text-sm !text-gray-400 ">Силы света </p>
+    </div>
+</td>
+
+
+<td class="text-center kills ">
+    <div class="relative">
+        <p style="margin-left: 10px;"> {{lastMatche.kills}}</p>
+        <div class="flex colorFullRow  h-1 left-0 -bottom-1 absolute">
+            <div appSetElemWidth [width]="100/(lastMatche.kills+lastMatche.assists+lastMatche.deaths)*lastMatche.kills"
+                [customColors]="'rgb(102, 187, 106)'"></div>
+            <div appSetElemWidth [width]="100/(lastMatche.kills+lastMatche.assists+lastMatche.deaths)*lastMatche.deaths"
+                [customColors]="'rgb(255, 76, 76)'"></div>
+            <div appSetElemWidth
+                [width]="100/(lastMatche.kills+lastMatche.assists+lastMatche.deaths)*lastMatche.assists"
+                [customColors]="'rgb(124, 153, 168)'"></div>
+        </div>
+    </div>
+</td>
+<td class="text-center deaths">
+    <p> {{lastMatche.deaths}}</p>
+</td>
+<td class="text-center assists">
+    <p> {{lastMatche.assists}}</p>
+</td>

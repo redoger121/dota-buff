@@ -30,6 +30,7 @@ export class UserDetailPageComponent implements OnInit, OnDestroy {
       )
       .subscribe((id) => {
         this.store.dispatch(UserDetailPageActions.SetPlayerId({ userId: id }));
+        this.store.dispatch(UserDetailPageActions.FetchAllUserMatches());
       });
   }
 

@@ -46,6 +46,8 @@ export interface MatchInfoWithItems {
   item_3: number;
   item_4: number;
   item_5: number;
+  duration_minutes?: number;
+  duration_seconds?: number;
   average_rank: null | number;
   party_size: number;
   start_time: number;

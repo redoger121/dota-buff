@@ -1,0 +1,33 @@
+<td class="text-left">
+    <div class="flex items-center">
+        <img [src]="playedWithUser.avatar" class="w-8 h-8 m-2" alt="user avatar">
+        <div class="" *ngIf="playedWithUser.name">
+
+            <a (click)="goToUserPage(playedWithUser.account_id)"
+                class="played-with-personaname link">{{playedWithUser.name}}</a>
+            <p>{{playedWithUser.last_played*1000|date:'d-M-y'}}</p>
+
+        </div>
+        <div class="" *ngIf="!playedWithUser.name">
+
+            <a (click)="goToUserPage(playedWithUser.account_id)"
+               class="text-lg !text-sky-600  hover:!text-sky-800">{{playedWithUser.personaname}}</a>
+            <p class="text-sm text-gray-400">{{playedWithUser.last_played*1000|date:'d-M-y'}}</p>
+
+        </div>
+
+    </div>
+</td>
+<td  class="text-left pr-4 w-1/5">
+    <div class="test-wrapper relative">
+        <p  class="text-sm text-gray-400">{{playedWithUser.with_games}}</p>
+        <app-colorfull-line *ngIf="playedWithUser.with_win_percent" [width]="playedWithUser.with_games/userWithMaxGames*100"></app-colorfull-line>
+    </div>
+</td>
+
+<td  class="text-left pr-6 w-1/4">
+    <div class="test-wrapper relative">
+        <p  class="text-sm text-gray-400">{{ playedWithUser.with_win_percent}}</p>
+        <app-colorfull-line *ngIf="playedWithUser.with_win_percent" [width]="playedWithUser.with_win_percent"></app-colorfull-line>
+    </div>
+</td>

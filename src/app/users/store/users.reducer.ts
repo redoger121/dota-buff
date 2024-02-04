@@ -32,6 +32,8 @@ export const playersReducer = createReducer(
   on(PlayersAction.SetPlayersSearchBar, (state, { searchBar }) => ({
     ...state,
     searchBar: searchBar,
+    playersAreReady: false,
+    proPlayersAreReady: false,
   })),
   on(PlayersAction.FetchUsers, (state) => ({
     ...state,
@@ -40,6 +42,6 @@ export const playersReducer = createReducer(
   on(PlayersAction.FetchProPlayers, (state) => ({
     ...state,
     proPlayersAreReady: false,
-  }))
+  })),
+ 
 );
-

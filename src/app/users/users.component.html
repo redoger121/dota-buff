@@ -1,22 +1,5 @@
-<div class="container mx-auto">
-    <div class="row justify-content-center">
-        <div class="col-6">
-            <form [formGroup]="findUserForm" (ngSubmit)="onSubmit()">
-                <div class="mb-3">
-                   
-                    <input class="form-control"
-                     type="text" 
-                     id="search"
-                     formControlName="userName">
-                </div>
-                <button class="btn btn-success" [disabled]="!findUserForm.valid" type="submit" >Найти</button>
-            </form>
-
-
-        </div>
-
-
-        <!-- <app-users-list *ngIf="usersAreReady" [users]="users" [proPlayers]="proPlayers" ></app-users-list> -->
-        <router-outlet></router-outlet>
-    </div>
+<div class="w-full main-page-wrapper">
+    
 </div>
+
+

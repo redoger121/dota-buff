@@ -1,14 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Player } from 'src/app/shared/models/match-full-info.model';
+import { ViewChild } from '@angular/core';
+import { BaseChartDirective } from 'ng2-charts';
+import { Chart, ChartConfiguration, ChartType } from 'chart.js';
+import { externalTooltipHandler } from './chart-tooltip';
+import Annotation from 'chartjs-plugin-annotation';
+
 import {
   DataStorageService,
   HeroResponseData,
 } from 'src/app/shared/services/data-storage.service';
-import { ViewChild } from '@angular/core';
-import { Chart, ChartConfiguration, ChartType } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
-import Annotation from 'chartjs-plugin-annotation';
-import { externalTooltipHandler } from './chart-tooltip';
+import { Player } from 'src/app/shared/models/match-full-info.model';
 @Component({
   selector: 'app-match-map',
   templateUrl: './match-map.component.html',
@@ -27,20 +28,25 @@ export class MatchMapComponetn implements OnInit {
   @Input() direEasyLaneCore!: number;
   @Input() radiantGoldAvg?: number[];
   @Input() radiantExpAvg?: number[];
-
+  @Input() heroes!:HeroResponseData
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
   public lineChartData!: ChartConfiguration['data'];
   public lineChartOptions!: ChartConfiguration['options'];
-  get heroes(): HeroResponseData {
-    return this.dataStorageService.heroes;
-  }
 
-  constructor(private dataStorageService: DataStorageService) {
+
+  constructor() {
     Chart.register(Annotation);
   }
 
   ngOnInit(): void {
+
+
+console.log(this.towerRadiantStatus)
+console.log(this.towerDireStatus)
+console.log(this.barracksRadiantSratus)
+console.log(this.barracksDireSratus)
+
     if (this.radiantGoldAvg && this.radiantExpAvg) {
       let amountOfMinutesInChart: number[] = [];
       this.radiantGoldAvg.forEach((el, index) => {
@@ -89,13 +95,13 @@ export class MatchMapComponetn implements OnInit {
         responsive: true,
         interaction: {
           mode: 'index',
-          intersect: false
+          intersect: false,
         },
         plugins: {
-          title:{display:true},
+          title: { display: true },
           tooltip: {
             enabled: false,
-            position: 'nearest',
+            // position: 'nearest',
             external: externalTooltipHandler,
             // callbacks: {
             //   footer: this.footer,

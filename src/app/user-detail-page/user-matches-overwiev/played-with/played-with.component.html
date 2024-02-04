@@ -1,0 +1,21 @@
+<div class=" w-full" *ngIf="playedWith.length>0">
+
+    <table class="table-auto w-full border  border-cyan-900 ">
+        <caption class="text-left"> <a class="text-lg">Недавно играли с</a></caption>
+        <thead class="w-full">
+            <tr>
+                <th class="text-left pl-6">ИГРОК</th>
+                <th class="text-left">ИС</th>
+                <th class="text-left">% ПОБЕД С</th>
+            </tr>
+        </thead>
+        <tr app-played-with-item [playedWithUser]="user" [userWithMaxGames]="userWithMaxGames"
+            class="border-b border-cyan-900 " *ngFor="let user of playedWith">
+
+        </tr>
+    </table>
+</div>
+
+<div class="w-full overflow-hidden" *ngIf="playedWith.length===0">
+    <app-skeleton-loader [numberOfLines]="2"></app-skeleton-loader>
+</div>

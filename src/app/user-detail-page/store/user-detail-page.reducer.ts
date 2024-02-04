@@ -35,6 +35,9 @@ export const UserDetailPageReducer = createReducer(
   on(UserDetailPageActions.SetPlayerId, (state, { userId }) => ({
     ...state,
     playerId: userId,
+    playerWinLoseInfo: {} as UserWinLose,
+    playerAccountInfo: {} as UserAccountInfo,
+   
   })),
   on(UserDetailPageActions.SetPlayerWinLoseStat, (state, { winLoseInfo }) => ({
     ...state,

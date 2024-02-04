@@ -11,11 +11,11 @@ export class AppComponent implements OnInit {
 
   constructor(private dataStorageService: DataStorageService) {}
   ngOnInit(): void {
-    this.dataStorageService.fetchHeroes().subscribe();
-    this.dataStorageService.fetchLobbyTypes().subscribe();
-    this.dataStorageService.fetchAbilitiesIds().subscribe();
-    this.dataStorageService.fetchAbilitiesFullInfo().subscribe();
-    this.dataStorageService.fetchItemsIds().subscribe();
-    this.dataStorageService.fetchItemsFullInfo().subscribe();
+    // this.dataStorageService.fetchHeroes().subscribe();
+    // this.dataStorageService.fetchLobbyTypes().subscribe();
+    // this.dataStorageService.fetchAbilitiesIds().subscribe();
+    // this.dataStorageService.fetchAbilitiesFullInfo().subscribe();
+    // this.dataStorageService.fetchItemsIds().subscribe();
+    // this.dataStorageService.fetchItemsFullInfo().subscribe();
   }
 }

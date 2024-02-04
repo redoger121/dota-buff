@@ -1,0 +1,11 @@
+.net_worth {
+    color: rgb(201, 175, 29) !important;
+}
+
+td{
+    padding-right: 10px;
+}
+
+td:first-child{
+    padding-left: 10px;
+}

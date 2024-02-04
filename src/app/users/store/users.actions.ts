@@ -21,3 +21,7 @@ export const SetProPlayers = createAction(
   '[Users] set pro-players',
   props<{ proPlayers: ProPlayer[] }>()
 );
+
+export const SetPLayersReadyStateToFalse=createAction(
+  '[Users] set ready to false'
+)

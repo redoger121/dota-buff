@@ -1,0 +1,37 @@
+<td>
+    <div class="flex items-center">
+        <div class="">
+
+            <img [src]="'https://cdn.cloudflare.steamstatic.com'+heroes[player.hero_id].img"
+                class="w-[52px] h-8 mr-1 min-w-12" alt="hero-img"  [tooltip]="heroes[player.hero_id].localized_name"  [heroDesc]="heroes[player.hero_id]">
+        </div>
+        <div class="text-left">
+            <a class="text-base !text-sky-600 transition-all hover:!text-sky-800 "
+                *ngIf="player.personaname">{{player.personaname}}</a>
+            <p class="text-base !text-sky-600 transition-all hover:!text-sky-800 " *ngIf="!player.personaname">Аноним
+            </p>
+            <p class="text-base text-gray-300 text-nowrap" *ngIf="player.rankName">
+                {{ranksLocalized[player.rankName-1]}}
+                [{{player.rank_tier%10}}]</p>
+            <p class="text-base text-gray-300" *ngIf="!player.rankName">Неизвестно</p>
+        </div>
+    </div>
+</td>
+
+<ng-template ngFor let-playerAbility [ngForOf]="abilityUpgardesArray">
+    <td class="" *ngIf="playerAbility!=='1' &&  abilitiesFullInfo[playerAbility].img">
+        <div class="">
+            <img class="w-8 h-8 min-w-7 mx-auto" [tooltip]="playerAbility" [allAbilitiesDesc]="abilitiesFullInfo"
+                [src]="'https://cdn.cloudflare.steamstatic.com'+abilitiesFullInfo[playerAbility].img" alt="">
+        </div>
+    </td>
+    <td *ngIf="playerAbility==='1'">
+        <div class="w-8 min-w-7"></div>
+    </td>
+    <td *ngIf="playerAbility!=='1' && !abilitiesFullInfo[playerAbility].img">
+        <div class="item-container">
+            <img class="w-8 h-8 min-w-7 mx-auto" [tooltip]="playerAbility" [allAbilitiesDesc]="abilitiesFullInfo"
+                [src]="'https://www.opendota.com/assets/images/dota2/talent_tree.svg'" alt="">
+        </div>
+    </td>
+</ng-template>

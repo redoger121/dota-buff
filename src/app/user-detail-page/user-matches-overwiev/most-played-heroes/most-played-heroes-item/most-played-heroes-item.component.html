@@ -1,0 +1,23 @@
+<td>
+    <div class="flex items-center ">
+        <img [src]="'https://cdn.cloudflare.steamstatic.com'+  heroPlayed.hero_avatar"
+            class="h-8 w-12  m-2" alt="hero-avatar">
+        <div class="">
+            <p  class="text-lg !text-sky-600  hover:!text-sky-800">{{heroPlayed.hero_name}}</p>
+            <p class="text-sm text-gray-400">{{heroPlayed.last_played*1000|date: 'd-M-Y'}}</p>
+        </div>
+    </div>
+</td>
+<td class="w-1/5 pr-4">
+    <div class="relative">
+        <p>{{heroPlayed.games}}</p>
+        <app-colorfull-line [width]="heroPlayed.games/heroMaxPlayed*100"></app-colorfull-line>
+    </div>
+</td>
+
+<td class="w-1/4 pr-6">
+    <div class="relative" *ngIf="heroPlayed.with_win_percent">
+        <p>{{ heroPlayed.with_win_percent}}</p>
+        <app-colorfull-line [width]="heroPlayed.with_win_percent"></app-colorfull-line>
+    </div>
+</td>

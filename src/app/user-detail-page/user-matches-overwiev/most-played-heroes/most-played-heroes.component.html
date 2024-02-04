@@ -1,0 +1,20 @@
+<div class="w-full" *ngIf="heroesPlayedStatistic.length>0">
+
+    <table class="table-auto w-full border  border-cyan-900">
+        <caption class="text-left"> <a class="text-lg">Сыграно на героях</a></caption>
+        <thead class="w-full">
+            <tr>
+                <th class="text-left  pl-6" >Герой</th>
+                <th class="text-left">ИС</th>
+                <th class="text-left">% ПОБЕД</th>
+            </tr>
+        </thead>
+        <tr app-most-played-heroes-item [heroPlayed]="hero"  class="border-b border-cyan-900 " [heroMaxPlayed]="heroMaxPlayed"
+            *ngFor="let hero of heroesPlayedStatistic">
+
+        </tr>
+    </table>
+</div>
+<div class="w-full overflow-hidden" *ngIf="heroesPlayedStatistic.length===0">
+<app-skeleton-loader [numberOfLines]="2"></app-skeleton-loader>
+</div>

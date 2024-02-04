@@ -3,6 +3,8 @@ import { createReducer, on } from '@ngrx/store';
 import { Hero } from '../models/heroes.model';
 import * as SharedActions from './shared.actions';
 import { ItemFullInfo } from '../models/items-full-info.model';
+import { Lobby } from '../models/lobby-type.model';
+import { AbilitiesFullInfo } from '../models/abilities.model';
 
 export interface State {
   heroes: {
@@ -10,6 +12,9 @@ export interface State {
   };
   itemsIds: { [key: number]: string };
   itemsFullInfo: ItemFullInfo;
+  lobbyTypes: Lobby[];
+  abilitiesIds: { [key: number]: string };
+  abilitiesFullInfo: AbilitiesFullInfo;
 }
 
 const initialState: State = {
@@ -18,6 +23,9 @@ const initialState: State = {
   },
   itemsIds: {},
   itemsFullInfo: {},
+  lobbyTypes: [],
+  abilitiesIds: {},
+  abilitiesFullInfo: {},
 };
 
 export const SharedReducer = createReducer(
@@ -34,7 +42,6 @@ export const SharedReducer = createReducer(
     ...state,
     itemsFullInfo: { ...itemsFullInfo },
   })),
-
   on(
     SharedActions.SethResolveDataforAllmatchesComponet,
     (state, { itemsIds, itemsFullInfo, heroes }) => ({
@@ -43,5 +50,17 @@ export const SharedReducer = createReducer(
       itemsIds: { ...itemsIds },
       itemsFullInfo: { ...itemsFullInfo },
     })
-  )
+  ),
+  on(SharedActions.SetLobbyTypes, (state, { lobbyTypes }) => ({
+    ...state,
+    lobbyTypes: [...lobbyTypes],
+  })),
+  on(SharedActions.SetAbilitiesIds, (state, { abilitiesIds }) => ({
+    ...state,
+    abilitiesIds: { ...abilitiesIds },
+  })),
+  on(SharedActions.SetAbilitiesFullInfo, (state, { abilitiesFullInfo }) => ({
+    ...state,
+    abilitiesFullInfo: { ...abilitiesFullInfo },
+  }))
 );

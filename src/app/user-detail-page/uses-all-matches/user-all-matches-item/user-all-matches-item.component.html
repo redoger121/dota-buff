@@ -1,0 +1,155 @@
+<td class="text-left">
+    <div class="flex   items-center">
+        <div class="relative overflow-hidden w-3 border-l-2 h-8 border-sky-500" *ngIf="match.version">
+            <div class="absolute top-0 -left-3  ">
+                <svg viewBox="0 0 24 24"
+                    style="display: block; color: rgba(255, 255, 255, 0.87); fill: #0ea5e9; height: 24px; width: 24px; user-select: none; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;">
+                    <path
+                        d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z">
+                    </path>
+                </svg>
+            </div>
+        </div>
+
+        <div class=" overflow-visible" *ngIf="match.version">
+
+            <img [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[match.hero_id].img" alt="hero_avatar"
+                class="mr-2 h-8 w-14 min-w-8 " [tooltip]="heroes[match.hero_id].localized_name"
+                [heroDesc]="heroes[match.hero_id]">
+        </div>
+
+
+        <div class="pl-3 overflow-visible  " *ngIf="!match.version">
+
+            <img [src]="'https://cdn.cloudflare.steamstatic.com'+ heroes[match.hero_id].img" alt="hero_avatar"
+                class="mr-2 h-8 w-14 min-w-12" [tooltip]="heroes[match.hero_id].localized_name"  [heroDesc]="heroes[match.hero_id]">
+        </div>
+
+
+        <div class="">
+
+            <a (click)="goToMatchDetail(match.match_id)"
+                class="text-sm !text-gray-400 transition-colors hover:!text-sky-600" >{{heroes[match.hero_id].localized_name}}</a>
+            <p class="text-sm text-gray-400">{{match.start_time*1000|date}}</p>
+        </div>
+    </div>
+</td>
+<td class="text-left">
+    <div class="" *ngIf="match.player_slot/100>1">
+        <div class="" *ngIf="match.radiant_win">
+            <p class="text-md font-medium text-red-700">Поражение</p>
+        </div>
+        <div class="" *ngIf="!match.radiant_win">
+            <p class="text-md text-green-700 font-medium">Победа</p>
+        </div>
+
+    </div>
+    <div class="" *ngIf="match.player_slot/100<1">
+        <div class="" *ngIf="!match.radiant_win">
+            <p class="text-md font-medium text-red-700">Поражение</p>
+        </div>
+        <div class="" *ngIf="match.radiant_win">
+            <p class="text-md text-green-700 font-medium">Победа</p>
+        </div>
+    </div>
+    <p class="text-sm text-gray-400">
+        {{lobbies[match.lobby_type]}}
+
+    </p>
+</td>
+
+
+<td class="text-left">
+    <div class="">
+
+        <div class="text-sm text-gray-400 w-fit relative">
+
+            {{gameType[match.game_mode]}}
+            <div class="absolute top-0  -right-7  flex" *ngIf="match.party_size">
+
+                <img src="../../../../assets/imgs/matches/two-users.svg" class="h-4 w-4  " alt="users-icon">
+                <p class="text-xs text-gray-400">{{match.party_size}}</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-gray-400" *ngIf="match.average_rank">{{ranksLocalized[averageRank[0]]}}
+            [{{averageRank[1]}}]</p>
+        <p class="text-sm text-gray-400" *ngIf="!match.average_rank">Неизвестно</p>
+
+    </div>
+</td>
+
+
+<td class="text-left text-sm !text-gray-400 ">
+    <p class="text-sm !text-gray-400 "> {{match.duration_minutes}}:{{match.duration_seconds}}</p>
+
+    <div class="" *ngIf="match.player_slot/100>1">
+
+        <p class="text-sm !text-gray-400 ">Силы тьмы </p>
+    </div>
+    <div class="" *ngIf="match.player_slot/100<1">
+
+        <p class="text-sm !text-gray-400 ">Силы света </p>
+    </div>
+</td>
+<td class="text-center text-sm kills ">
+    <div class="relative">
+        <p style="margin-left: 10px;" class="!text-gray-400"> {{match.kills}}</p>
+        <div class="flex colorFullRow  h-1 left-0 -bottom-1 absolute">
+            <div appSetElemWidth [width]="100/(match.kills+match.assists+match.deaths)*match.kills"
+                [customColors]="'rgb(102, 187, 106)'"></div>
+            <div appSetElemWidth [width]="100/(match.kills+match.assists+match.deaths)*match.deaths"
+                [customColors]="'rgb(255, 76, 76)'"></div>
+            <div appSetElemWidth [width]="100/(match.kills+match.assists+match.deaths)*match.assists"
+                [customColors]="'rgb(124, 153, 168)'"></div>
+        </div>
+    </div>
+</td>
+<td class="text-center text-sm !text-gray-400 deaths px-3">{{ match.deaths }}</td>
+<td class="text-center pr-4 text-sm !text-gray-400 assists">{{ match.assists }}</td>
+<td>
+    <div class="flex w-fit">
+        <div *ngIf="match.item_0" class="item-container  h-fit w-full" [tooltip]="itemIds[match.item_0] "
+            [allItemsDesc]="itemFullInfo">
+            <img class="main-item min-w-8"
+                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[match.item_0]].img" />
+        </div>
+        <!-- <div class="no-item-in-slot" *ngIf="!match.item_0"></div> -->
+
+        <div *ngIf="match.item_1" class="item-container  h-fit w-full" [tooltip]="itemIds[match.item_1] "
+            [allItemsDesc]="itemFullInfo">
+            <img class="main-item min-w-8"
+                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[match.item_1]].img" />
+        </div>
+        <!-- <div class="no-item-in-slot" *ngIf="!match.item_1"></div> -->
+
+        <div *ngIf="match.item_2" class="item-container  h-fit w-full" [tooltip]="itemIds[match.item_2] "
+            [allItemsDesc]="itemFullInfo">
+
+            <img class="main-item min-w-8"
+                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[match.item_2]].img" />
+        </div>
+        <!-- <div class="no-item-in-slot " *ngIf="!match.item_2"></div> -->
+
+        <div *ngIf="match.item_3" class="item-container  h-fit w-full" [tooltip]="itemIds[match.item_3] "
+            [allItemsDesc]="itemFullInfo">
+            <img class="main-item min-w-8"
+                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[match.item_3]].img" />
+        </div>
+        <!-- <div class="no-item-in-slot" *ngIf="!match.item_3"></div> -->
+
+        <div *ngIf="match.item_4" class="item-container  h-fit w-full" [tooltip]="itemIds[match.item_4] "
+            [allItemsDesc]="itemFullInfo">
+            <img class="main-item min-w-8"
+                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[match.item_4]].img" />
+        </div>
+        <!-- <div class="no-item-in-slot" *ngIf="!match.item_4"></div> -->
+
+        <div *ngIf="match.item_5" class="item-container h-fit w-full" [tooltip]="itemIds[match.item_5] "
+            [allItemsDesc]="itemFullInfo">
+            <img class="main-item min-w-8"
+                [src]="'https://cdn.cloudflare.steamstatic.com'+itemFullInfo[itemIds[match.item_5]].img" />
+        </div>
+        <div class="no-item-in-slot" *ngIf="!match.item_5"></div>
+    </div>
+</td>

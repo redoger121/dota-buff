@@ -62,7 +62,7 @@ picture {
     position: relative;
 }
 
-.main-wrapper{
+/* .main-wrapper{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -70,9 +70,9 @@ picture {
     align-items:center;
     max-height: 380px;
     
-}
+} */
 .chart-wrapper{
-    max-width: calc(100% - 300px)!important;
+    max-width: 850px!important;
     padding: 0!important;
 }
 /* .chart{

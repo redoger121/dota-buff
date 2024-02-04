@@ -1,0 +1,34 @@
+<div class=" w-full" *ngIf="lastMatches.length>0">
+
+    <table class="table-auto w-full border  border-cyan-900 ">
+        <caption class="text-left"><a class="text-lg">Недавние матчи</a></caption>
+        <thead class="w-full ">
+            <tr>
+                <th class="text-left pl-6">Герой</th>
+                <th class="text-left">Результат</th>
+                <th class="text-left">Режим игры</th>
+                <th class="text-left">Длительсноть</th>
+                <th class="text-center">У</th>
+                <th class="text-center">С</th>
+                <th class="text-center pr-6">П</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+            <tr app-last-match-item appSetColorFullLineWidth [lastMatche]="lastMatche" [heroe]="heroes[lastMatche.hero_id]"
+                *ngFor=" let lastMatche of lastMatches " class="border-b border-cyan-900 "></tr>
+
+
+
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="" *ngIf="lastMatches.length===0">
+<app-skeleton-loader [numberOfLines]="3"></app-skeleton-loader>
+</div>

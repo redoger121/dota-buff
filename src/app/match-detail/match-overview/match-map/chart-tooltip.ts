@@ -47,7 +47,7 @@ export const externalTooltipHandler = (context: any) => {
       const th = document.createElement('th');
       th.style.borderWidth = '0';
 
-      console.log(title);
+      // console.log(title);
       const text = document.createTextNode(title + ' минута');
 
       th.appendChild(text);
@@ -74,60 +74,48 @@ export const externalTooltipHandler = (context: any) => {
 
       const td = document.createElement('td');
       td.style.borderWidth = '0';
-    
+
       let splitedBOdy: string[] = body[0].split(':');
-      console.log(splitedBOdy[0])
-    let teamName:string=''  
-      if(splitedBOdy[1].indexOf('-')>=0){
-        
-        teamName='Силы тьмы'
-      }
-      else{
-        teamName='Силы света'
+      // console.log(splitedBOdy[0])
+      let teamName: string = '';
+      if (splitedBOdy[1].indexOf('-') >= 0) {
+        teamName = 'Силы тьмы';
+      } else {
+        teamName = 'Силы света';
       }
       let bodyValue = splitedBOdy[1].replace(/\D/g, '');
-  
+
       let bodyValueNUmber = Number(bodyValue);
 
-      console.log(bodyValue);
-      console.log(bodyValueNUmber);
+      // console.log(bodyValue);
+      // console.log(bodyValueNUmber);
       let spanForTeamName = document.createElement('span');
-   
 
-spanForTeamName.innerHTML=teamName
+      spanForTeamName.innerHTML = teamName;
 
+      if (teamName == 'Силы тьмы') {
+        spanForTeamName.style.setProperty('color', 'red', 'important');
+      } else {
+        spanForTeamName.style.setProperty('color', 'green', 'important');
+      }
 
-if(teamName=='Силы тьмы'){
+      let spanForValue = document.createElement('span');
 
-    spanForTeamName.style.setProperty('color', 'red', 'important')
-    
-}
-else{
-    spanForTeamName.style.setProperty('color', 'green', 'important')
-}
+      spanForValue.innerHTML = ' ' + bodyValueNUmber + ' ' + splitedBOdy[0];
 
-let spanForValue=document.createElement('span')
-
-
-spanForValue.innerHTML=' '+bodyValueNUmber+ ' '+splitedBOdy[0]
-
-
-if(splitedBOdy[0]=='Золото'){
-
-    spanForValue.style.setProperty('color', 'yellow', 'important')
-    
-}
-else{
-    spanForValue.style.setProperty('color', 'lightblue', 'important')
-}
+      if (splitedBOdy[0] == 'Золото') {
+        spanForValue.style.setProperty('color', 'yellow', 'important');
+      } else {
+        spanForValue.style.setProperty('color', 'lightblue', 'important');
+      }
       const text1 = document.createTextNode(teamName);
-      const text2 = document.createTextNode(' '+bodyValueNUmber);
-      const text3 = document.createTextNode(' '+splitedBOdy[0]);
+      const text2 = document.createTextNode(' ' + bodyValueNUmber);
+      const text3 = document.createTextNode(' ' + splitedBOdy[0]);
 
       td.appendChild(span);
       td.appendChild(spanForTeamName);
       td.appendChild(spanForValue);
-    //   td.appendChild(text3);
+      //   td.appendChild(text3);
       tr.appendChild(td);
       tableBody.appendChild(tr);
     });

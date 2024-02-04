@@ -35,7 +35,7 @@ export class ProcessingGameComponent implements OnInit {
     this.matchesDetailService
       .postMachIdtoProcessing(matchId)
       .subscribe((response) => {
-        var refreshIntervalId = setInterval(() => {
+        let refreshIntervalId = setInterval(() => {
           this.matchesDetailService
             .getMatchProcessingState(matchId)
             .subscribe((response) => {

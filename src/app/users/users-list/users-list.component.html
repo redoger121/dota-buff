@@ -1,38 +1,60 @@
-<div class="" *ngIf="proPlayersAreFound && proPlayersAreReady">
-    <table class="table">
-        <thead>
+<div class="container mx-auto">
+    <div class="">
 
-            <tr>
-                <th>Игрок</th>
-                <th>Команда</th>
-            </tr>
+        <div class="" *ngIf="proPlayersAreFound && proPlayersAreReady">
+            <span class="text-4xl font-bold">Профессиональные игроки</span>
+            <table class="table-auto w-full border-b border-t my-3  border-sky-500">
+                <thead>
 
-        </thead>
-        <tr *ngFor="let player of proPlayers">
-            <td>
-                <div class="table-first-column--wrapper">
-                    <img [src]="player.avatar" alt="pro-player avatar">
-                    <a (click)="goToUserDetailPage(player.account_id)">{{player.name}}</a>
-                </div>
-            </td>
-            <td>
-                <p>{{player.team_name}}</p>
-            </td>
-        </tr>
-    </table>
-</div>
+                    <tr>
+                        <th class="text-2xl">Игрок</th>
+                        <th class="text-2xl">Команда</th>
+                    </tr>
 
-<div class="" *ngIf="!proPlayersAreFound  && proPlayersAreReady">
-    <h3>Профессиональных игроков не найдено</h3>
-</div>
-<app-loading-spiner *ngIf="!proPlayersAreFound && !proPlayersAreReady"></app-loading-spiner>
+                </thead>
+                <tbody>
 
-<app-loading-spiner *ngIf="!usersAreReady"></app-loading-spiner>
+                    <tr class="border-b border-slate-500  last:border-0" *ngFor="let player of proPlayers">
+                        <td>
+                            <div class="flex  items-center">
+                                <img [src]="player.avatarfull" class="w-20 h-20 rounded-full border-2 m-2"
+                                    alt="pro-player avatar">
+                                <a class="text-2xl cursor-pointer block transition ease-in-out delay-150 hover:!text-sky-600"
+                                    (click)="goToUserDetailPage(player.account_id)">{{player.name}}</a>
+                            </div>
+                        </td>
+                        <td>
+                            <a
+                                class="text-2xl cursor-pointer  transition ease-in-out delay-150 hover:!text-sky-600">{{player.team_name}}</a>
+                        </td>
+                    </tr>
 
-<div *ngIf="usersAreReady">
-    <span>Игкроков найдено: {{usersAmount}}</span>
-    <div class="user-list">
-        <app-list-item *ngFor="let user of users" [user]="user"></app-list-item>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="" *ngIf="!proPlayersAreFound  && proPlayersAreReady">
+            <h3>Профессиональных игроков не найдено</h3>
+        </div>
+
+        <app-skeleton-loader *ngIf="!proPlayersAreFound && !proPlayersAreReady"
+            [numberOfLines]="1"></app-skeleton-loader>
+
+        <app-skeleton-loader *ngIf="!usersAreReady" [numberOfLines]="1"></app-skeleton-loader>
+
+
+
+
+        <div *ngIf="usersAreReady">
+            <span class="text-4xl font-bold">Игкроков найдено: {{usersAmount}}</span>
+            <div class="flex flex-wrap justify-around">
+                <app-list-item class=" flex w-full md:w-1/2 p-2 lg:w-1/3 " *ngFor="let user of users"
+                    [user]="user"></app-list-item>
+            </div>
+
+
+        </div>
+
     </div>
-
 </div>

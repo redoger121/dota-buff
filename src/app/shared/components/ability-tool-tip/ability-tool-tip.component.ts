@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   AbilitiesFullInfo,
   OneAbilityFullInfo,
@@ -14,35 +21,32 @@ export class AbilityToolTipComponent implements OnInit, AfterViewInit {
   @Input() allAbilitiesDesc!: AbilitiesFullInfo;
   @Input() top!: number;
   @Input() left!: number;
-  @ViewChild('ability-desc') abilityDesc!: ElementRef;
+  @Input() width!: number;
+
   bottom!: number;
   abilityInfo!: OneAbilityFullInfo;
   constructor(private elRef: ElementRef) {}
   ngOnInit(): void {
-    this.elRef.nativeElement.style.left =
-      this.left - this.elRef.nativeElement.getBoundingClientRect().width + 'px';
+    this.elRef.nativeElement.style.left = this.left + this.width + 'px';
     this.elRef.nativeElement.style.top =
       this.top + document.documentElement.scrollTop + 'px';
     this.abilityInfo = this.allAbilitiesDesc[this.abilityName];
-    this.top = this.elRef.nativeElement.getBoundingClientRect().top;
-    this.left = this.elRef.nativeElement.getBoundingClientRect().left;
-    this.bottom = this.elRef.nativeElement.getBoundingClientRect().bottom;
-    console.log(this.top);
-    // console.log(this.left);
-    // console.log(this.bottom);
-    // console.log(this.elRef.nativeElement.offsetHeight)
-    // console.log(this.elRef.nativeElement.getBoundingClientRect());
-    console.log(window.innerHeight);
-  
   }
 
-  ngAfterViewInit(){
-    let elHeigth=this.elRef.nativeElement.offsetHeight
-    console.log(this.elRef.nativeElement.offsetHeight)
-    // console.log(this.abilityDesc.nativeElement)
-    if(elHeigth+this.top> window.innerHeight){
-      this.elRef.nativeElement.style.top=this.top + document.documentElement.scrollTop-( elHeigth+this.top-window.innerHeight)+ 'px'
-      console.log(this.elRef.nativeElement.style.top)
+  ngAfterViewInit() {
+    let elHeigth = this.elRef.nativeElement.offsetHeight;
+    let elWidth = this.elRef.nativeElement.offsetWidth;
+    let elLeft = this.elRef.nativeElement.getBoundingClientRect().left;
+
+    if (elHeigth + this.top > window.innerHeight) {
+      this.elRef.nativeElement.style.top =
+        this.top +
+        document.documentElement.scrollTop -
+        (elHeigth + this.top - window.innerHeight) +
+        'px';
+    }
+    if (elLeft + elWidth > window.innerWidth) {
+      this.elRef.nativeElement.style.left = this.left - elWidth + 'px';
     }
   }
 }

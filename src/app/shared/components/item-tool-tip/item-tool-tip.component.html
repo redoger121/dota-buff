@@ -15,9 +15,13 @@
         </div>
     </div>
 
-    <div *ngIf="itemDesc.hint" class="item-hint"> {{itemDesc.hint}}</div>
-    <div *ngIf="itemDesc.notes" class="item-hint">{{itemDesc.notes}}</div>
-    <div *ngIf="itemDesc.lore" class="item-lore">{{itemDesc.lore}}</div>
+    <div *ngIf="itemDesc.hint" class="item-hint"><p class="text-wrap">
+        {{itemDesc.hint}}
+
+    </p> 
+</div>
+    <div *ngIf="itemDesc.notes.length<0" class="item-hint"><p>{{itemDesc.notes}}</p></div>
+    <div *ngIf="itemDesc.lore" class="item-lore"><p class="text-wrap">{{itemDesc.lore}}</p></div>
 
     <div class="item-components" *ngIf="itemDesc.components">
         <p class="components-header">Components:</p>

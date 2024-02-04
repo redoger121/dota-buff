@@ -215,6 +215,17 @@ export class UsersDetailPageEffects {
         );
       }),
       map((allMatches) => {
+        allMatches.forEach((el) => {
+          const notProcessedDuration: string = (el.duration / 60).toFixed(2);
+
+          el.duration_minutes = Number(notProcessedDuration.split('.')[0]);
+
+          el.duration_seconds = Number(
+            Number(
+              60 * (Number(notProcessedDuration.split('.')[1]) / 100)
+            ).toFixed(0)
+          );
+        });
         return UserDetailPageActions.SetAllUserMatches({
           allMatches: allMatches,
         });

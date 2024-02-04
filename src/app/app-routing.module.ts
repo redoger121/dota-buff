@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { UsersComponent } from './users/users.component';
 import { UserDetailPageComponent } from './user-detail-page/user-detail-page.component';
 import { UserMatchesOverwievComponent } from './user-detail-page/user-matches-overwiev/user-matches-overwiev.component';
@@ -10,30 +11,39 @@ import { ProcessingGameComponent } from './processing-game/processing-game.compo
 import { UsersAllMatchesComponent } from './user-detail-page/uses-all-matches/users-all-matches.component';
 import { UserMatchesOverviewResolver } from './user-detail-page/user-matches-overwiev/user-matches-verview-resolve.service';
 import {
+  AbilitiesFullInfoResolver,
+  AbilitiesIdsResolver,
   AllMatchesResolver,
   ItemIdsResolver,
   ItemsFulInfoResolver,
-} from './user-detail-page/uses-all-matches/users-all-matches-resolve.service';
+  LobbyTypesResolver,
+} from './shared/services/shared-resolve.service';
+import { UserHeroesStaticticComponent } from './user-detail-page/user-heroes-statistic/user-heroes-statistic';
 
 const routes: Routes = [
   {
     path: '',
     component: UsersComponent,
-    children: [
-      {
-        path: ':username',
-        component: UsersListComponent,
-        // resolve:[userListsResolver]
-      },
-    ],
+    
   },
+
+
+
+  {path:':username', component: UsersListComponent},
   {
     path: 'matches/:id',
     component: MatchDetailComponent,
+  
     children: [
       {
         path: 'overview',
-        component: MatchOverViewComponent,
+        component: MatchOverViewComponent,   resolve: [
+          ItemIdsResolver,
+          ItemsFulInfoResolver,
+          AllMatchesResolver,
+          AbilitiesIdsResolver,
+          AbilitiesFullInfoResolver,
+        ],
       },
     ],
   },
@@ -44,7 +54,7 @@ const routes: Routes = [
   {
     path: 'user-datail/:id',
     component: UserDetailPageComponent,
-    // resolve[],
+
     children: [
       {
         path: 'overview',
@@ -56,6 +66,10 @@ const routes: Routes = [
         component: UsersAllMatchesComponent,
         resolve: [AllMatchesResolver, ItemIdsResolver, ItemsFulInfoResolver],
       },
+      {
+        path: 'heroes-stat',
+        component: UserHeroesStaticticComponent
+      }
     ],
   },
 ];

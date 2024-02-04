@@ -24,12 +24,15 @@ export class ItemToolTipComponent implements OnInit, AfterViewInit {
   constructor(private elRef: ElementRef) {}
 
   ngOnInit(): void {
+   
     this.elRef.nativeElement.style.left =
       this.left - this.elRef.nativeElement.getBoundingClientRect().width + 'px';
     this.elRef.nativeElement.style.top =
       this.top + document.documentElement.scrollTop + 'px';
-
+    // console.log(this.itemName)
     this.itemDesc = this.allItems[this.itemName];
+    // console.log(this.itemDesc)
+    // console.log(this.itemDesc)
     if (this.itemDesc.components) {
       this.componentsCost = this.itemDesc.components.reduce((acc, el) => {
         return acc + this.allItems[el].cost;
@@ -43,15 +46,15 @@ export class ItemToolTipComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     let elHeigth = this.elRef.nativeElement.offsetHeight;
-    console.log(this.elRef.nativeElement.offsetHeight);
+    // console.log(this.elRef.nativeElement.offsetHeight);
     // console.log(this.abilityDesc.nativeElement)
     if (elHeigth + this.top > window.innerHeight) {
       this.elRef.nativeElement.style.top =
-        this.top +
+        this.top -10+
         document.documentElement.scrollTop -
         (elHeigth + this.top - window.innerHeight) +
         'px';
-      console.log(this.elRef.nativeElement.style.top);
+      // console.log(this.elRef.nativeElement.style.top);
     }
   }
 }

@@ -56,6 +56,7 @@ export class UserMatchesOverwievComponent implements OnInit, OnDestroy {
           if (el.games > this.userWithMaxGames) {
             this.userWithMaxGames = el.games;
           }
+          
         });
 
         this.heroesPlayedStatistic =
@@ -68,16 +69,9 @@ export class UserMatchesOverwievComponent implements OnInit, OnDestroy {
       });
   }
 
-  goToUserPage(accountId: number) {
-    this.router.navigate(['user-datail', accountId, 'overview']);
-    this.store.dispatch(
-      UserDetailPageActions.SetPlayerId({ userId: accountId })
-    );
-  }
 
-  goToMatchDetail(matchId: number) {
-    this.router.navigate(['matches', matchId, 'overview']);
-  }
+
+ 
   ngOnDestroy(): void {
     this.paramsSubscription2.unsubscribe();
   }

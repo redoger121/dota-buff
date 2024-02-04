@@ -1,24 +1,74 @@
 @-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 .show {
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
 }
+
+ul {
+  padding: 0;
+}
+
+li:nth-child(n + 2) {
+  margin-top: 10px;
+}
+
+.mobile-menu {
+  right: 0;
+  transition: all 0.5s;
+  height: 100vh;
+  background-color: rgb(11, 74, 110);
+  top: 63px
+}
+
+nav {
+  background-color: rgb(11, 74, 110)
+}
+
+.desktop-menu{
+    width:fit-content
+}
+
+a{
+    transition: all 0.3s;
+}
+
+a:hover{
+    opacity: 0.32;
+}
+
+input[type="text"]{
+    
+    background-color: rgb(11, 74, 110);
+    color: white;
+}
+
+input:focus-visible {
+    outline:none;
+}
+
+
+/* 
+ul li{
+    display:  inline;
+
+} */
+

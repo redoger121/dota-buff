@@ -1,4 +1,3 @@
-import { DOCUMENT } from '@angular/common';
 import {
   ComponentRef,
   Directive,
@@ -13,21 +12,25 @@ import { AbilitiesFullInfo } from '../models/abilities.model';
 import { AbilityToolTipComponent } from '../components/ability-tool-tip/ability-tool-tip.component';
 import { Hero } from '../models/heroes.model';
 import { HeroOnMapToolTipComponent } from '../components/hero-on-map-tool-tip/hero-on-map-tool-tip.component';
+import { HeroDescriptionToolTopComponent } from '../components/hero-description-tool-tip/hero-description-tool-tip.component';
 
 @Directive({
   selector: '[tooltip]',
 })
 export class TooltipDirective {
   @Input() tooltip: string = '';
-  @Input() delay? = 0;
+  @Input() delay: number = 0;
   @Input() allItemsDesc?: ItemFullInfo;
   @Input() allAbilitiesDesc?: AbilitiesFullInfo;
   @Input() heroOnMAp?: Hero;
-  @Input() isRadiant: boolean=false;
+  @Input() isRadiant: boolean = false;
+  @Input() heroDesc!: Hero;
   private isClear: boolean = true;
   private timer: any;
   top = 0;
   left = 0;
+  right = 0;
+  parentHeight = 0;
   createdToolTip!:
     | ComponentRef<ItemToolTipComponent>
     | ComponentRef<AbilityToolTipComponent>
@@ -41,9 +44,6 @@ export class TooltipDirective {
     if (!this.isClear) {
       return;
     }
-
-    this.top = this.elemRef.nativeElement.getBoundingClientRect().top;
-    this.left = this.elemRef.nativeElement.getBoundingClientRect().left;
 
     if (this.isClear) {
       this.timer = setTimeout(() => {
@@ -61,7 +61,9 @@ export class TooltipDirective {
 
   private createTooltipPopup() {
     if (this.allItemsDesc) {
-      console.log(this.left, this.top);
+      this.top = this.elemRef.nativeElement.getBoundingClientRect().top;
+      this.left = this.elemRef.nativeElement.getBoundingClientRect().left;
+
       let popup = this.viewContainerRef.createComponent(ItemToolTipComponent);
       this.createdToolTip = popup;
       popup.instance.itemName = this.tooltip;
@@ -69,9 +71,13 @@ export class TooltipDirective {
       popup.instance.left = this.left;
       popup.instance.top = this.top;
       this.isClear = false;
-
     }
     if (this.allAbilitiesDesc) {
+      let width = 0;
+      this.top = this.elemRef.nativeElement.getBoundingClientRect().top;
+      this.left = this.elemRef.nativeElement.getBoundingClientRect().left;
+      width = this.parentHeight =
+      this.elemRef.nativeElement.getBoundingClientRect().width;
       let popup = this.viewContainerRef.createComponent(
         AbilityToolTipComponent
       );
@@ -80,10 +86,13 @@ export class TooltipDirective {
       popup.instance.allAbilitiesDesc = this.allAbilitiesDesc;
       popup.instance.left = this.left;
       popup.instance.top = this.top;
-      console.log(popup)
+      popup.instance.width = width;
       this.isClear = false;
     }
     if (this.heroOnMAp) {
+      this.top = this.elemRef.nativeElement.getBoundingClientRect().top;
+      this.left = this.elemRef.nativeElement.getBoundingClientRect().left;
+
       let popup = this.viewContainerRef.createComponent(
         HeroOnMapToolTipComponent
       );
@@ -91,7 +100,29 @@ export class TooltipDirective {
       popup.instance.top = this.top;
       popup.instance.heroLaneRole = this.tooltip;
       popup.instance.hero = this.heroOnMAp;
-      popup.instance.isRadiant=this.isRadiant
+      popup.instance.isRadiant = this.isRadiant;
+      this.isClear = false;
+    }
+
+    if (this.heroDesc) {
+      let width = 0;
+      this.top = this.elemRef.nativeElement.getBoundingClientRect().top;
+      this.left = this.elemRef.nativeElement.getBoundingClientRect().left;
+
+      this.parentHeight =
+        this.elemRef.nativeElement.getBoundingClientRect().height;
+
+      width = this.parentHeight =
+        this.elemRef.nativeElement.getBoundingClientRect().width;
+
+      let popup = this.viewContainerRef.createComponent(
+        HeroDescriptionToolTopComponent
+      );
+      popup.instance.heroe = this.heroDesc;
+      popup.instance.top = this.top;
+      popup.instance.left = this.left;
+      popup.instance.width = width;
+      popup.instance.parentHeight = this.parentHeight;
       this.isClear = false;
     }
   }

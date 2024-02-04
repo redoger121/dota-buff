@@ -19,7 +19,5 @@ export class HeroOnMapToolTipComponent implements OnInit {
     this.elRef.nativeElement.style.left = -87 + 'px';
     this.elRef.nativeElement.style.bottom = 28 + 'px';
     
-    console.log(this.top);
-    console.log(this.elRef.nativeElement.getBoundingClientRect());
   }
 }
